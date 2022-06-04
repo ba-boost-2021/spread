@@ -1,0 +1,3 @@
+Add-Migration [---Migration Name---] -P Spread.Data -C SpreadDbContext -S Spread.Api
+--------------
+Update-Database -P Spread.Data -Context SpreadDbContext -S Spread.Api

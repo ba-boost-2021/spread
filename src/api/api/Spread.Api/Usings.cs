@@ -8,3 +8,4 @@ global using Spread.Data.Context;
 global using Spread.Entities.Main;
 global using Spread.Entities.Profile;
 global using Spread.Entities.Media;
+global using Spread.Common;

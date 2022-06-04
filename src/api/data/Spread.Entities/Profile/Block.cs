@@ -10,6 +10,7 @@ public class Block : EntityBase
 
     [ForeignKey(nameof(UserId))]
     public User User { get; set; }
+
     [ForeignKey(nameof(BlockedUserId))]
     public User BlockedUser { get; set; }
 }

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{F29927E4-F151-4BDF-933D-C61DD659B9DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_docs", "_docs", "{85896FAB-7D25-44ED-951B-339C06E923F0}"
+	ProjectSection(SolutionItems) = preProject
+		_docs\Migration.txt = _docs\Migration.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{C4AACA98-96C0-4347-AFBF-78ABCB741B77}"
 EndProject
