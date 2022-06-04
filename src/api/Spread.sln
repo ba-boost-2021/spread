@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{77
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Services", "services\Spread.Data.Services\Spread.Data.Services.csproj", "{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{8676DBCE-A7EB-4BED-A9C5-892E1B22C2D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Common", "common\Spread.Common\Spread.Common.csproj", "{CD093E66-76A2-4830-8488-28228F435217}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD093E66-76A2-4830-8488-28228F435217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD093E66-76A2-4830-8488-28228F435217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD093E66-76A2-4830-8488-28228F435217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD093E66-76A2-4830-8488-28228F435217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +74,7 @@ Global
 		{DC3FCD94-9A5A-4AA1-82E1-5AC98F332C6E} = {7D97CAB0-DE5B-4C27-BA72-F08C8A71CCE7}
 		{8EBE2394-43A7-4B89-8402-B662AF8CBD10} = {7D97CAB0-DE5B-4C27-BA72-F08C8A71CCE7}
 		{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
+		{CD093E66-76A2-4830-8488-28228F435217} = {8676DBCE-A7EB-4BED-A9C5-892E1B22C2D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80158213-D7C5-48EA-A81C-1159C2D6D3BE}
