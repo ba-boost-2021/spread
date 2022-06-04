@@ -12,7 +12,7 @@ using Spread.Data.Context;
 namespace Spread.Data.Migrations
 {
     [DbContext(typeof(SpreadDbContext))]
-    [Migration("20220604091106_Initial")]
+    [Migration("20220604201052_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -413,7 +413,7 @@ namespace Spread.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BlockedUserId")
+                    b.Property<Guid?>("BlockedUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
@@ -434,7 +434,7 @@ namespace Spread.Data.Migrations
                     b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -458,7 +458,8 @@ namespace Spread.Data.Migrations
                     b.Property<Guid?>("CreatedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("FollowingUserId")
+                    b.Property<Guid?>("FollowingUserId")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsActive")
@@ -473,7 +474,8 @@ namespace Spread.Data.Migrations
                     b.Property<Guid?>("ModifiedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid?>("UserId")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -616,15 +618,11 @@ namespace Spread.Data.Migrations
                 {
                     b.HasOne("Spread.Entities.Profile.User", "BlockedUser")
                         .WithMany()
-                        .HasForeignKey("BlockedUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BlockedUserId");
 
                     b.HasOne("Spread.Entities.Profile.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("BlockedUser");
 

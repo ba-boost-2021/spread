@@ -4,9 +4,9 @@
 public class Follower : EntityBase
 {
     [Required]
-    public Guid UserId { get; set; }
+    public Guid? UserId { get; set; }
     [Required]
-    public Guid FollowingUserId { get; set; }
+    public Guid? FollowingUserId { get; set; }
 
     [ForeignKey(nameof(UserId))]
     public User User { get; set; }
