@@ -5,7 +5,9 @@ builder.Services.Configure<Settings>(builder.Configuration.GetSection(nameof(Set
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddData(builder.Configuration);
+
+builder.Services.AddData(builder.Configuration)
+                .AddDataServices();
 
 var app = builder.Build();
 

@@ -14,23 +14,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{C4AACA98-9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7D97CAB0-DE5B-4C27-BA72-F08C8A71CCE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Api", "api\Spread.Api\Spread.Api.csproj", "{B43BC290-6322-4BB4-98B2-59EABE13AD4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Api", "api\Spread.Api\Spread.Api.csproj", "{B43BC290-6322-4BB4-98B2-59EABE13AD4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data", "data\Spread.Data\Spread.Data.csproj", "{AED56EFD-3237-4483-8D62-8F8DEAEA5E04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data", "data\Spread.Data\Spread.Data.csproj", "{AED56EFD-3237-4483-8D62-8F8DEAEA5E04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Entities", "data\Spread.Entities\Spread.Entities.csproj", "{017B9487-8335-47C4-B475-EA1DD2283597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Entities", "data\Spread.Entities\Spread.Entities.csproj", "{017B9487-8335-47C4-B475-EA1DD2283597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.UnitTests", "tests\Spread.UnitTests\Spread.UnitTests.csproj", "{DC3FCD94-9A5A-4AA1-82E1-5AC98F332C6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.UnitTests", "tests\Spread.UnitTests\Spread.UnitTests.csproj", "{DC3FCD94-9A5A-4AA1-82E1-5AC98F332C6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.IntegrationTests", "tests\Spread.IntegrationTests\Spread.IntegrationTests.csproj", "{8EBE2394-43A7-4B89-8402-B662AF8CBD10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.IntegrationTests", "tests\Spread.IntegrationTests\Spread.IntegrationTests.csproj", "{8EBE2394-43A7-4B89-8402-B662AF8CBD10}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{778817BD-A0C8-4F5D-9A21-E43C351D1198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Services", "services\Spread.Data.Services\Spread.Data.Services.csproj", "{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data.Services", "services\Spread.Data.Services\Spread.Data.Services.csproj", "{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{8676DBCE-A7EB-4BED-A9C5-892E1B22C2D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Common", "common\Spread.Common\Spread.Common.csproj", "{CD093E66-76A2-4830-8488-28228F435217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Common", "common\Spread.Common\Spread.Common.csproj", "{CD093E66-76A2-4830-8488-28228F435217}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_sample", "_sample", "{57D7F156-EE11-43EE-BEAC-3290AB02A6A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.Async", "_sample\BilgeAdam.Async\BilgeAdam.Async.csproj", "{79DE6BA6-5748-4F54-8134-274E71676222}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "commands", "commands", "{127EBCF4-CEA2-48AB-8727-30A9E4B88D5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "queries", "queries", "{9EADC146-349C-4E21-8CFF-3E53627B3274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Requests", "services\Spread.Data.Requests\Spread.Data.Requests.csproj", "{8DC52D62-4C4B-427D-B812-3765AFF89842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Management.Queries", "services\queries\Spread.Data.Management.Queries\Spread.Data.Management.Queries.csproj", "{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +78,18 @@ Global
 		{CD093E66-76A2-4830-8488-28228F435217}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD093E66-76A2-4830-8488-28228F435217}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD093E66-76A2-4830-8488-28228F435217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79DE6BA6-5748-4F54-8134-274E71676222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79DE6BA6-5748-4F54-8134-274E71676222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79DE6BA6-5748-4F54-8134-274E71676222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79DE6BA6-5748-4F54-8134-274E71676222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC52D62-4C4B-427D-B812-3765AFF89842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC52D62-4C4B-427D-B812-3765AFF89842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC52D62-4C4B-427D-B812-3765AFF89842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC52D62-4C4B-427D-B812-3765AFF89842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +102,11 @@ Global
 		{8EBE2394-43A7-4B89-8402-B662AF8CBD10} = {7D97CAB0-DE5B-4C27-BA72-F08C8A71CCE7}
 		{A63BFF89-2CD9-442B-AF22-B2FEC4AD3D7C} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
 		{CD093E66-76A2-4830-8488-28228F435217} = {8676DBCE-A7EB-4BED-A9C5-892E1B22C2D0}
+		{79DE6BA6-5748-4F54-8134-274E71676222} = {57D7F156-EE11-43EE-BEAC-3290AB02A6A3}
+		{127EBCF4-CEA2-48AB-8727-30A9E4B88D5C} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
+		{9EADC146-349C-4E21-8CFF-3E53627B3274} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
+		{8DC52D62-4C4B-427D-B812-3765AFF89842} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
+		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0} = {9EADC146-349C-4E21-8CFF-3E53627B3274}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80158213-D7C5-48EA-A81C-1159C2D6D3BE}

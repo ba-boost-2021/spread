@@ -15,11 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\data\Spread.Data\Spread.Data.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controllers\" />
+		<ProjectReference Include="..\..\services\Spread.Data.Services\Spread.Data.Services.csproj" />
 	</ItemGroup>
 
 </Project>

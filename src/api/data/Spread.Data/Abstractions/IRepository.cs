@@ -1,0 +1,15 @@
+﻿using System.Linq.Expressions;
+
+namespace Spread.Data.Abstractions;
+
+public interface IRepository<T> where T : EntityBase
+{
+    Task<T> Get(Guid id, CancellationToken cancellationToken);
+    Task<T> Get(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
+    Task<List<T>> GetAll(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
+    Task<PagedList<T>> GetPagedList(Expression<Func<T, bool>> predicate, PageRequest pageRequest, CancellationToken cancellationToken);
+    void Insert(T entity);
+    void Update(T entity);
+    void Delete(Guid id);
+    void Delete(T entity);
+}
