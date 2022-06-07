@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Spread.Common;
+using Spread.Data.Abstractions;
+using Spread.Data.Concretes;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +15,8 @@ public static class ServiceCollectionExtensions
         {
             builder.UseSqlServer(settings.ConnectionString);
         });
+        services.AddScoped<DbContext, SpreadDbContext>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
         return services;
     }
 }

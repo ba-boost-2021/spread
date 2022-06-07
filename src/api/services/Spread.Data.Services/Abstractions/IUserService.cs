@@ -2,6 +2,6 @@
 {
     public interface IUserService
     {
-        Task<List<User>> GetUsers(CancellationToken cancellationToken);
+        Task<List<UserListDto>> GetUsers(CancellationToken cancellationToken);
     }
 }

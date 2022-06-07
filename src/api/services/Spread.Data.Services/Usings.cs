@@ -1,11 +1,7 @@
-﻿global using System;
-global using System.Collections.Generic;
-global using System.Linq;
-global using System.Text;
-global using System.Threading.Tasks;
-global using Spread.Common;
-global using MediatR;
-global using Spread.Data.Abstractions;
-global using Spread.Data.Services.Abstractions;
-global using Spread.Entities.Profile;
+﻿global using MediatR;
 global using Spread.Data.Query.Requests;
+global using Spread.Data.Services.Abstractions;
+global using System;
+global using System.Collections.Generic;
+global using System.Threading.Tasks;
+global using Spread.Data.Requests.Contracts;

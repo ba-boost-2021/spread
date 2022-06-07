@@ -1,24 +1,20 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿namespace Spread.Api.Controllers.Management;
 
-namespace Spread.Api.Controllers.Management
+[Route("api/management/[controller]")]
+[ApiController]
+public class UserController : ControllerBase
 {
-    [Route("api/management/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
-    {
-        private readonly ILogger<UserController> logger;
+    private readonly IUserService service;
 
-        public UserController(ILogger<UserController> logger)
-        {
-            this.logger = logger;
-        }
-        [HttpGet("list")]
-        public async Task<IActionResult> GetUsers(CancellationToken cancellationToken)
-        {
-            await Task.Delay(5000, cancellationToken);
-            logger.LogInformation("Süreç işletildi");
-            return Ok("3 kullanıcı var");
-        }
+    public UserController(IUserService service)
+    {
+        this.service = service;
+    }
+
+    [HttpGet("list")]
+    public async Task<IActionResult> GetUsers(CancellationToken cancellationToken)
+    {
+        var result = await service.GetUsers(cancellationToken);
+        return Ok(result);
     }
 }

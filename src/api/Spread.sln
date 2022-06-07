@@ -34,15 +34,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Common", "common\Spr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_sample", "_sample", "{57D7F156-EE11-43EE-BEAC-3290AB02A6A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgeAdam.Async", "_sample\BilgeAdam.Async\BilgeAdam.Async.csproj", "{79DE6BA6-5748-4F54-8134-274E71676222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BilgeAdam.Async", "_sample\BilgeAdam.Async\BilgeAdam.Async.csproj", "{79DE6BA6-5748-4F54-8134-274E71676222}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "commands", "commands", "{127EBCF4-CEA2-48AB-8727-30A9E4B88D5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "queries", "queries", "{9EADC146-349C-4E21-8CFF-3E53627B3274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Requests", "services\Spread.Data.Requests\Spread.Data.Requests.csproj", "{8DC52D62-4C4B-427D-B812-3765AFF89842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data.Requests", "services\Spread.Data.Requests\Spread.Data.Requests.csproj", "{8DC52D62-4C4B-427D-B812-3765AFF89842}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Management.Queries", "services\queries\Spread.Data.Management.Queries\Spread.Data.Management.Queries.csproj", "{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data.Management.Queries", "services\queries\Spread.Data.Management.Queries\Spread.Data.Management.Queries.csproj", "{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpreadDb.Test.Common", "tests\SpreadDb.Test.Common\SpreadDb.Test.Common.csproj", "{48A42D43-F4D1-4F4A-AAF7-6C4AB2FCE2AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Mapper", "services\Spread.Mapper\Spread.Mapper.csproj", "{DB092833-9379-4118-9690-02EC46BA04FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +94,14 @@ Global
 		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A42D43-F4D1-4F4A-AAF7-6C4AB2FCE2AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A42D43-F4D1-4F4A-AAF7-6C4AB2FCE2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A42D43-F4D1-4F4A-AAF7-6C4AB2FCE2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A42D43-F4D1-4F4A-AAF7-6C4AB2FCE2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB092833-9379-4118-9690-02EC46BA04FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB092833-9379-4118-9690-02EC46BA04FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB092833-9379-4118-9690-02EC46BA04FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB092833-9379-4118-9690-02EC46BA04FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +119,8 @@ Global
 		{9EADC146-349C-4E21-8CFF-3E53627B3274} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
 		{8DC52D62-4C4B-427D-B812-3765AFF89842} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
 		{15D5CCC0-74D0-48A3-B97B-D208DBF66AA0} = {9EADC146-349C-4E21-8CFF-3E53627B3274}
+		{48A42D43-F4D1-4F4A-AAF7-6C4AB2FCE2AA} = {7D97CAB0-DE5B-4C27-BA72-F08C8A71CCE7}
+		{DB092833-9379-4118-9690-02EC46BA04FC} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80158213-D7C5-48EA-A81C-1159C2D6D3BE}

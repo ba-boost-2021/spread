@@ -10,8 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\data\Spread.Data\Spread.Data.csproj" />
-    <ProjectReference Include="..\Spread.Data.Requests\Spread.Data.Requests.csproj" />
+    <ProjectReference Include="..\queries\Spread.Data.Management.Queries\Spread.Data.Management.Queries.csproj" />
   </ItemGroup>
 
 </Project>

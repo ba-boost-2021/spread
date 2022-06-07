@@ -20,6 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\services\Spread.Mapper\Spread.Mapper.csproj" />
 		<ProjectReference Include="..\Spread.Entities\Spread.Entities.csproj" />
 	</ItemGroup>
 

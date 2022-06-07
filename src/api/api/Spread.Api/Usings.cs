@@ -9,3 +9,5 @@ global using Spread.Entities.Main;
 global using Spread.Entities.Profile;
 global using Spread.Entities.Media;
 global using Spread.Common;
+global using Microsoft.AspNetCore.Mvc;
+global using Spread.Data.Services.Abstractions;

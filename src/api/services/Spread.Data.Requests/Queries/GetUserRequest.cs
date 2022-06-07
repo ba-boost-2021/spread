@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using Spread.Entities.Profile;
+using Spread.Data.Requests.Contracts;
 
 namespace Spread.Data.Query.Requests;
 
-public class GetUserRequest : IRequest<List<User>>
+public class GetUserRequest : IRequest<List<UserListDto>>
 {
 }
