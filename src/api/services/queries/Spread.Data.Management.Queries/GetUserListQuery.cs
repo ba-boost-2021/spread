@@ -20,6 +20,6 @@ internal class GetUserListQuery : IRequestHandler<GetUserRequest, List<UserListD
     public Task<List<UserListDto>> Handle(GetUserRequest request, CancellationToken cancellationToken)
     {
         var repository = unitOfWork.GetRepository<User>();
-        return repository.GetAll<UserListDto>(f => true, cancellationToken);
+        return repository.GetAll<UserListDto>(f => true, o => o.EMail, cancellationToken);
     }
 }

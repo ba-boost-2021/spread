@@ -18,8 +18,8 @@ internal class UnitOfWork : IUnitOfWork
         return new Repository<T>(dbContext, mapper);
     }
 
-    public int SaveChanges()
+    public Task<int> SaveChanges(CancellationToken cancellationToken)
     {
-        return dbContext.SaveChanges();
+        return dbContext.SaveChangesAsync(cancellationToken);
     }
 }

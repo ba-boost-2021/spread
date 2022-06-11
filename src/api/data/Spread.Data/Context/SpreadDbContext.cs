@@ -14,7 +14,7 @@ public class SpreadDbContext : DbContext
     public DbSet<HashTag> HashTags { get; set; }
     public DbSet<Like> Likes { get; set; }
     public DbSet<LookUp> LookUps { get; set; }
-    public DbSet<LookUpType> LookUpTypes { get; set; }
+    public DbSet<LookupType> LookUpTypes { get; set; }
     public DbSet<Message> Messages { get; set; }
     public DbSet<Notification> Notifications { get; set; }
     public DbSet<PostHashTag> PostHashTags { get; set; }

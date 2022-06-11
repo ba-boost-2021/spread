@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Spread.Data.Seed;
 
 namespace Spread.Test.Common;
 
@@ -22,11 +23,23 @@ public class SpreadApplicationFactory : WebApplicationFactory<Program>
         builder.UseEnvironment("Test");
         builder.ConfigureServices(services =>
         {
+            var baseSeeder = typeof(ITestSeeder);
+            var seeders = AppDomain.CurrentDomain.GetAssemblies()
+                                                 .SelectMany(x => x.GetTypes())
+                                                 .Where(t => baseSeeder.IsAssignableFrom(t) && t.IsClass);
+
             serviceProvider = services.BuildServiceProvider();
             using (var scope = serviceProvider.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<DbContext>();
                 dbContext.Database.Migrate();
+
+                foreach (var seeder in seeders)
+                {
+                    var testSeeder = (ITestSeeder)Activator.CreateInstance(seeder);
+                    testSeeder.Seed(dbContext);
+                }
+                dbContext.SaveChanges();
             }
         });
     }

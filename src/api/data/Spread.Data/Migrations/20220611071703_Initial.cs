@@ -38,7 +38,7 @@ namespace Spread.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LookUpTypes",
+                name: "LookupTypes",
                 schema: "Main",
                 columns: table => new
                 {
@@ -53,7 +53,7 @@ namespace Spread.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LookUpTypes", x => x.Id);
+                    table.PrimaryKey("PK_LookupTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -122,7 +122,7 @@ namespace Spread.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LookUps",
+                name: "Lookups",
                 schema: "Main",
                 columns: table => new
                 {
@@ -139,18 +139,18 @@ namespace Spread.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LookUps", x => x.Id);
+                    table.PrimaryKey("PK_Lookups", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LookUps_LookUps_ParentId",
+                        name: "FK_Lookups_Lookups_ParentId",
                         column: x => x.ParentId,
                         principalSchema: "Main",
-                        principalTable: "LookUps",
+                        principalTable: "Lookups",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_LookUps_LookUpTypes_TypeId",
+                        name: "FK_Lookups_LookupTypes_TypeId",
                         column: x => x.TypeId,
                         principalSchema: "Main",
-                        principalTable: "LookUpTypes",
+                        principalTable: "LookupTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -193,8 +193,8 @@ namespace Spread.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FollowingUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    FollowingUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -399,15 +399,15 @@ namespace Spread.Data.Migrations
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LookUps_ParentId",
+                name: "IX_Lookups_ParentId",
                 schema: "Main",
-                table: "LookUps",
+                table: "Lookups",
                 column: "ParentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LookUps_TypeId",
+                name: "IX_Lookups_TypeId",
                 schema: "Main",
-                table: "LookUps",
+                table: "Lookups",
                 column: "TypeId");
 
             migrationBuilder.CreateIndex(
@@ -433,6 +433,9 @@ namespace Spread.Data.Migrations
                 schema: "Media",
                 table: "Posts",
                 column: "UserId");
+
+            migrationBuilder.MigrateUsers();
+            migrationBuilder.MigrateLookups();
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -454,7 +457,7 @@ namespace Spread.Data.Migrations
                 schema: "Media");
 
             migrationBuilder.DropTable(
-                name: "LookUps",
+                name: "Lookups",
                 schema: "Main");
 
             migrationBuilder.DropTable(
@@ -474,7 +477,7 @@ namespace Spread.Data.Migrations
                 schema: "Main");
 
             migrationBuilder.DropTable(
-                name: "LookUpTypes",
+                name: "LookupTypes",
                 schema: "Main");
 
             migrationBuilder.DropTable(

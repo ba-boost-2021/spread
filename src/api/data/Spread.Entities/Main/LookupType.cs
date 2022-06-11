@@ -1,7 +1,7 @@
 ﻿namespace Spread.Entities.Main;
 
-[Table("LookUpTypes", Schema = "Main")]
-public class LookUpType : EntityBase
+[Table("LookupTypes", Schema = "Main")]
+public class LookupType : EntityBase
 {
     [Required]
     [MaxLength(32)]

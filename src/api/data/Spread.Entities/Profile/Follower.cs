@@ -3,9 +3,7 @@
 [Table("Followers", Schema = "Profile")]
 public class Follower : EntityBase
 {
-    [Required]
     public Guid? UserId { get; set; }
-    [Required]
     public Guid? FollowingUserId { get; set; }
 
     [ForeignKey(nameof(UserId))]

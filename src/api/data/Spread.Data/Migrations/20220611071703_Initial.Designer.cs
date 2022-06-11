@@ -12,7 +12,7 @@ using Spread.Data.Context;
 namespace Spread.Data.Migrations
 {
     [DbContext(typeof(SpreadDbContext))]
-    [Migration("20220604201052_Initial")]
+    [Migration("20220611071703_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,10 +65,10 @@ namespace Spread.Data.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("LookUps", "Main");
+                    b.ToTable("Lookups", "Main");
                 });
 
-            modelBuilder.Entity("Spread.Entities.Main.LookUpType", b =>
+            modelBuilder.Entity("Spread.Entities.Main.LookupType", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -99,7 +99,7 @@ namespace Spread.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LookUpTypes", "Main");
+                    b.ToTable("LookupTypes", "Main");
                 });
 
             modelBuilder.Entity("Spread.Entities.Main.SystemParameter", b =>
@@ -459,7 +459,6 @@ namespace Spread.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("FollowingUserId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsActive")
@@ -475,7 +474,6 @@ namespace Spread.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("UserId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -540,7 +538,7 @@ namespace Spread.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ParentId");
 
-                    b.HasOne("Spread.Entities.Main.LookUpType", "Type")
+                    b.HasOne("Spread.Entities.Main.LookupType", "Type")
                         .WithMany()
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -633,15 +631,11 @@ namespace Spread.Data.Migrations
                 {
                     b.HasOne("Spread.Entities.Profile.User", "FollowingUser")
                         .WithMany()
-                        .HasForeignKey("FollowingUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FollowingUserId");
 
                     b.HasOne("Spread.Entities.Profile.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("FollowingUser");
 

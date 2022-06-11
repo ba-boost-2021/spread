@@ -1,6 +1,6 @@
 ﻿namespace Spread.Entities.Main;
 
-[Table("LookUps", Schema = "Main")]
+[Table("Lookups", Schema = "Main")]
 public class LookUp : EntityBase
 {
     [Required]
@@ -11,7 +11,7 @@ public class LookUp : EntityBase
     public Guid? ParentId { get; set; }
 
     [ForeignKey(nameof(TypeId))]
-    public LookUpType Type { get; set; }
+    public LookupType Type { get; set; }
 
     [ForeignKey(nameof(ParentId))]
     public LookUp Parent { get; set; }

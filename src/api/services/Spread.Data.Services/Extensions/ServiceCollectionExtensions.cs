@@ -10,7 +10,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUserService, UserService>();
 
         var queriesAssembly = AppDomain.CurrentDomain.Load("Spread.Data.Management.Queries");
-        services.AddMediatR(queriesAssembly);
+        var commandsAssembly = AppDomain.CurrentDomain.Load("Spread.Data.Management.Commands");
+        services.AddMediatR(queriesAssembly, commandsAssembly);
         return services;
     }
 }
