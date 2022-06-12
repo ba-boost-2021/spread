@@ -19,8 +19,17 @@ internal class NewLookupCommand : IRequestHandler<NewLookupRequest, bool>
 
     public async Task<bool> Handle(NewLookupRequest request, CancellationToken cancellationToken)
     {
-        var entity = mapper.Map<LookUp>(request.Data);
+        if(string.IsNullOrEmpty(request.Data.Name))
+        {
+            return false;
+        }
         var repository = unitOfWork.GetRepository<LookUp>();
+        var conflict = await repository.Get(f => f.IsActive && !f.IsDeleted && f.Name == request.Data.Name, cancellationToken);
+        if(conflict is not null)
+        {
+            return false;
+        }
+        var entity = mapper.Map<LookUp>(request.Data);
         repository.Insert(entity);
         var result = await unitOfWork.SaveChanges(cancellationToken);
         return result > 0;
