@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Spread.Data.Requests.Queries
 {
-    public class NewSystemParameterRequest:IRequest<bool>
+    public class NewSystemParameterRequest : IRequest<bool>
     {
         public NewSystemParameterRequest(NewSystemParameterRequestDto data)
         {
