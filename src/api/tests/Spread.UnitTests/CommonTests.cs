@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Spread.Common;
+using Spread.Common.Extensions;
 using System.Linq;
 
 namespace Spread.UnitTests
@@ -23,6 +24,14 @@ namespace Spread.UnitTests
             Assert.That(sut.PageCount, Is.EqualTo(pageCount));
             Assert.That(sut.ItemCount, Is.EqualTo(fetchedItemCount));
             Assert.That(sut.PageSize, Is.EqualTo(pageSize));
+        }
+
+        [TestCase("123", "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3")]
+        [TestCase("abc123!", "033b83d92431548e13424903c235a9922af56dd34d53c9b72b37cf158489213e")]
+        public void Hash_Algorithm_Returns_SameValue(string password, string result)
+        {
+            var hash = password.CreateHash();
+            Assert.That(hash, Is.EqualTo(result));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Spread.Mapper.Profiles
         public ProfileProfile()
         {
             CreateMap<User, UserListDto>();
-            CreateMap<NewUserDto, User>();
+            CreateMap<RegisterUserRequestDto, User>();
         }
     }
 }

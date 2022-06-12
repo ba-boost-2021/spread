@@ -9,11 +9,6 @@ internal class UserService : IUserService
         this.mediator = mediator;
     }
 
-    public Task<bool> CreateUser(NewUserDto data, CancellationToken cancellationToken)
-    {
-        return mediator.Send(new NewUserRequest(data), cancellationToken);
-    }
-
     public Task<List<UserListDto>> GetUsers(CancellationToken cancellationToken)
     {
         return mediator.Send(new GetUserRequest(), cancellationToken);

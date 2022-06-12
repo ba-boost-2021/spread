@@ -9,11 +9,13 @@ internal class Repository<T> : IRepository<T> where T : EntityBase
 {
     private readonly DbContext dbContext;
     private readonly IMapper mapper;
+    private readonly IClaims claims;
 
-    public Repository(DbContext dbContext, IMapper mapper)
+    public Repository(DbContext dbContext, IMapper mapper, IClaims claims)
     {
         this.dbContext = dbContext;
         this.mapper = mapper;
+        this.claims = claims;
     }
 
     public void Delete(T entity)
@@ -67,12 +69,21 @@ internal class Repository<T> : IRepository<T> where T : EntityBase
         entity.IsDeleted = false;
         entity.CreatedAt = DateTime.Now;
         entity.ModifiedAt = DateTime.Now;
+        if (claims.IsAuthenticated)
+        {
+            entity.CreatedBy = claims.CurrentUser.Id;
+            entity.ModifiedBy = claims.CurrentUser.Id;
+        }
         dbContext.Set<T>().Add(entity);
     }
 
     public void Update(T entity)
     {
         entity.ModifiedAt = DateTime.Now;
+        if (claims.IsAuthenticated)
+        {
+            entity.ModifiedBy = claims.CurrentUser.Id;
+        }
         dbContext.Set<T>().Update(entity);
     }
 }

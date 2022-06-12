@@ -13,7 +13,8 @@ public static class MigrationBuilderExtensions
                                     },
                                     new object[,]
                                     {
-                                        { ConstantIds.User.AdminId, "admin", "admin@spread.com", "123", "2", null, false, true, false, DateTime.Now, null, DateTime.Now, null },
+                                        //123.
+                                        { ConstantIds.User.AdminId, "admin", "admin@spread.com", "702890088273b69964ada4175d78e184d1bd695daf406e3dec07a25e5b631823", "AdminHashValue!", null, false, true, false, DateTime.Now, null, DateTime.Now, null },
                                     },
                                     schema: "Profile");
     }

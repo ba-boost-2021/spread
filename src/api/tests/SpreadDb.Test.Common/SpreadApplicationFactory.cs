@@ -32,6 +32,8 @@ public class SpreadApplicationFactory : WebApplicationFactory<Program>
             using (var scope = serviceProvider.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<DbContext>();
+                dbContext.Database.EnsureDeleted();// hata vb sebeplerden silinmemişse database, onu sil
+
                 dbContext.Database.Migrate();
 
                 foreach (var seeder in seeders)

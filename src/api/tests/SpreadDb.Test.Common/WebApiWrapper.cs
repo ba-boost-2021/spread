@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
@@ -16,8 +17,11 @@ public class WebApiWrapper
         this.serializerOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
+    public string AccessToken { get; set; }
+
     public async Task<T> Get<T>(string url)
     {
+        SetupHeader();
         var response = await client.GetAsync(url);
         if (!response.IsSuccessStatusCode)
         {
@@ -31,6 +35,7 @@ public class WebApiWrapper
     public async Task<TResult> Post<TDto, TResult>(string url, TDto user)
     {
         var content = new StringContent(JsonSerializer.Serialize(user, serializerOptions), Encoding.UTF8, "application/json");
+        SetupHeader();
         var response = await client.PostAsync(url, content);
         if (!response.IsSuccessStatusCode)
         {
@@ -38,7 +43,21 @@ public class WebApiWrapper
             return default(TResult);
         }
         var json = await response.Content.ReadAsStringAsync();
+        if (string.IsNullOrEmpty(json))
+        {
+            return default(TResult);
+        }
         return JsonSerializer.Deserialize<TResult>(json, serializerOptions);
+    }
+
+    private void SetupHeader()
+    {
+        if (string.IsNullOrEmpty(AccessToken))
+        {
+            return;
+        }
+
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken);
     }
 
     internal void DropDatabase()

@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions
         services.AddAutoMapper(config =>
         {
             config.AddProfile<ProfileProfile>();
+            config.AddProfile<MainProfile>();
         });
         return services;
     }
