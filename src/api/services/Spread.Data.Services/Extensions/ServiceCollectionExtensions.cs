@@ -11,6 +11,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<ILookupService, LookupService>();
         services.AddScoped<ISystemParameterService, SystemParameterService>();
+        services.AddScoped<ILookupTypeService, LookupTypeService>();
 
         var queriesAssembly = AppDomain.CurrentDomain.Load("Spread.Data.Management.Queries");
         var commandsAssembly = AppDomain.CurrentDomain.Load("Spread.Data.Management.Commands");
