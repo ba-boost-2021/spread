@@ -15,6 +15,15 @@ public class LookUpSeeder : ITestSeeder
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = DateTime.UtcNow,
                 IsActive = true,
+            },
+            new LookUp
+            {
+                Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                Name = "Test Lookup2",
+                TypeId = ConstantIds.LookupType.CityId,
+                CreatedAt = DateTime.UtcNow,
+                ModifiedAt = DateTime.UtcNow,
+                IsActive = true,
             });
     }
 }

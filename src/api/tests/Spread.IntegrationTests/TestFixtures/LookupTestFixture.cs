@@ -2,6 +2,7 @@
 using Spread.Data.Requests.Contracts;
 using Spread.Data.Seed;
 using Spread.Test.Common;
+using System;
 using System.Threading.Tasks;
 
 namespace Spread.IntegrationTests.TestFixtures
@@ -48,6 +49,25 @@ namespace Spread.IntegrationTests.TestFixtures
             };
             var result = await Api.Post<NewLookupRequestDto, bool>("api/management/lookup/add", content);
             Assert.That(result, Is.False);
+        }
+        [Test]
+        public async Task ICanGet_Lookup_By_Id()
+        {
+            var guid1 = new Guid("00000000-0000-0000-0000-000000000001");
+            var result = await Api.Get<LookUpDto>($"api/management/lookup/get/{guid1}");
+            Assert.IsNotNull(result);
+            Assert.That(result.Id, Is.EqualTo(guid1));
+            Assert.That(result.Name, Is.EqualTo("Test Lookup2"));
+            Assert.That(result.TypeId, Is.EqualTo(ConstantIds.LookupType.CityId));
+            Assert.That(result.ParentId, Is.Null);
+            Assert.That(result.IsActive, Is.True);
+        }
+        [Test]
+        public async Task ICanNot_Get_Lookup_ById_If_EntityNot_Exists()
+        {
+            var guid1 = new Guid("a0000000-0000-0000-0000-000000000001");
+            var result = await Api.Get<LookUpDto>($"api/management/lookup/get/{guid1}");
+            Assert.IsNull(result);
         }
     }
 }

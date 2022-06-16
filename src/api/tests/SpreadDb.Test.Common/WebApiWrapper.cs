@@ -10,6 +10,7 @@ public class WebApiWrapper
     private readonly HttpClient client;
     private readonly SpreadApplicationFactory factory;
     private readonly JsonSerializerOptions serializerOptions;
+
     public WebApiWrapper(SpreadApplicationFactory factory)
     {
         this.factory = factory;
@@ -29,7 +30,7 @@ public class WebApiWrapper
             return default(T);
         }
         var json = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<T>(json, serializerOptions);
+        return string.IsNullOrEmpty(json) ? default(T) : JsonSerializer.Deserialize<T>(json, serializerOptions);
     }
 
     public async Task<TResult> Post<TDto, TResult>(string url, TDto user)
