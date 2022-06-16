@@ -21,5 +21,16 @@ namespace Spread.Api.Controllers.Management
             var result = await service.CreateLookupType(data, cancellationToken);
             return Ok(result);
         }
+        [HttpGet("get/{id}")]
+        public async Task<IActionResult> GetById([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            var result = await service.LookupTypeGetById(id, cancellationToken);
+            //if (result is null)
+            //{
+            //    return BadRequest();
+            //}
+            return Ok(result);
+        }
+       
     }
 }
