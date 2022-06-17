@@ -20,5 +20,16 @@ namespace Spread.Api.Controllers.Management
             var result = await service.CreateSystemParameter(data, cancellationToken);
             return Ok(result);
         }
+
+        [HttpGet("get/{id}")]
+        public async Task<IActionResult> GetSystemParameterById([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            var result = await service.GetSystemParameterById(id, cancellationToken);
+            //if (result is null)
+            //{
+            //    return BadRequest();
+            //}
+            return Ok(result);
+        }
     }
 }

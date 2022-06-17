@@ -1,4 +1,8 @@
-﻿public interface ISystemParameterService
+﻿namespace Spread.Data.Services.Abstractions
 {
-    Task<bool> CreateSystemParameter(NewSystemParameterRequestDto data, CancellationToken cancellationToken);
+    public interface ISystemParameterService
+    {
+        Task<bool> CreateSystemParameter(NewSystemParameterRequestDto data, CancellationToken cancellationToken);
+        Task<SystemParameterDto> GetSystemParameterById(Guid id, CancellationToken cancellationToken);
+    }
 }

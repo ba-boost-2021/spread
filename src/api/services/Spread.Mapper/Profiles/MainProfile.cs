@@ -13,7 +13,7 @@ namespace Spread.Mapper.Profiles
             CreateMap<NewSystemParameterRequestDto, SystemParameter>();
             CreateMap<LookUp, LookUpDto>();
             CreateMap<LookupType, LookupTypeDto>();
-
+            CreateMap<SystemParameter, SystemParameterDto>();
         }
     }
 }
