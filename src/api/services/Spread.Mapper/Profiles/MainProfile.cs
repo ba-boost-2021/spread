@@ -9,6 +9,11 @@ namespace Spread.Mapper.Profiles
         public MainProfile()
         {
             CreateMap<NewLookupRequestDto, LookUp>();
+            CreateMap<NewLookupTypeRequestDto, LookupType>();
+            CreateMap<NewSystemParameterRequestDto, SystemParameter>();
+            CreateMap<LookUp, LookUpDto>();
+            CreateMap<LookupType, LookupTypeDto>();
+            CreateMap<SystemParameter, SystemParameterDto>();
         }
     }
 }

@@ -13,4 +13,9 @@ internal class LookupService : ILookupService
     {
         return mediator.Send(new NewLookupRequest(data), cancellationToken);
     }
+
+    public Task<LookUpDto> GetById(Guid id, CancellationToken cancellationToken)
+    {
+        return mediator.Send(new GetLookupByIdRequest(id), cancellationToken);
+    }
 }

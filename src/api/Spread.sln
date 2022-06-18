@@ -48,9 +48,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpreadDb.Test.Common", "tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Mapper", "services\Spread.Mapper\Spread.Mapper.csproj", "{DB092833-9379-4118-9690-02EC46BA04FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Seed", "data\Spread.Data.Seed\Spread.Data.Seed.csproj", "{CC2FBFCD-3A20-4BB5-9199-67182797680F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data.Seed", "data\Spread.Data.Seed\Spread.Data.Seed.csproj", "{CC2FBFCD-3A20-4BB5-9199-67182797680F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.Data.Management.Commands", "services\commands\Spread.Data.Management.Commands\Spread.Data.Management.Commands.csproj", "{8EE0DF77-068D-452E-A75D-6559194D9F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data.Management.Commands", "services\commands\Spread.Data.Management.Commands\Spread.Data.Management.Commands.csproj", "{8EE0DF77-068D-452E-A75D-6559194D9F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
