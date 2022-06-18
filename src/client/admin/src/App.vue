@@ -1,21 +1,32 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <AppLeftMenu />
+      <div class="layout-page">
+        <AppHeader />
+        <div class="content-wrapper">
+           <div class="container-xxl flex-grow-1 container-p-y">
+                Page Content
+           </div>
+        </div>
+        <AppFooter />
+        <div class="content-backdrop fade"></div>
+      </div>
+    </div>
+  </div>
+  <div class="layout-overlay layout-menu-toggle"></div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<script>
+import AppHeader from "./Layout/AppHeader.vue";
+import AppFooter from "./Layout/AppFooter.vue";
+import AppLeftMenu from "./Layout/AppLeftMenu.vue";
+ export default {
+   name: "App",
+   components: {
+     AppHeader,
+     AppLeftMenu,
+     AppFooter
+   }
+ }
+</script>

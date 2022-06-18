@@ -1,4 +1,6 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import Extensions from "./main.extension";
 
-createApp(App).mount('#app')
+Extensions();
+createApp(App).mount("#app");
