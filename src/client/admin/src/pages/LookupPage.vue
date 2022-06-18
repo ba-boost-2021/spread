@@ -1,25 +1,30 @@
 <template>
   <div>
+    <div v-if="isFailed" class="alert alert-warning">işlem Başarısız</div>
     <div class="card">
       <h5 class="card-header">Meta Veriler</h5>
       <div class="table-responsive text-nowrap">
         <table class="table table-dark">
           <thead>
             <tr>
+              <th>Id</th>
               <th>Name</th>
-              <th>Value</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-            <tr>
+            <tr v-for="l in lookups" :key="l.id">
               <td>
                 <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                <strong>Angular Project</strong>
+                <strong>{{ l.id }}</strong>
               </td>
-              <td>Albert Cook</td>
-              <td><span class="badge bg-label-primary me-1">Active</span></td>
+              <td>{{ l.name }}</td>
+              <td>
+                <span class="badge bg-label-primary me-1">{{
+                  l.isActive
+                }}</span>
+              </td>
               <td>
                 <div class="dropdown">
                   <button
@@ -49,7 +54,24 @@
 <script>
 export default {
   name: "LookupPage",
+  data() {
+    return {
+      lookups: [],
+      isFailed: false,
+    };
+  },
+  mounted() {
+    this.$ajax
+      .get("api/management/lookup/list")
+      .then((response) => {
+        if (response.data) {
+          this.lookups = response.data;
+        }
+      })
+      .catch((error) => {
+        this.isFailed = true;
+      });
+  },
 };
 </script>
-<style>
-</style>
+<style></style>

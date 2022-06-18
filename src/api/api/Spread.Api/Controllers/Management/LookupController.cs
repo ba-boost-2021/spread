@@ -26,7 +26,15 @@ namespace Spread.Api.Controllers.Management
             var result = await service.GetById(id, cancellationToken);
             return Ok(result);
         }
-
+        [HttpGet("list")]
+        [AllowAnonymous] //TODO:Authentication sürecinden sonra kaldırılıcak
+        public async Task<IActionResult> GetLookups(CancellationToken cancellationToken)
+        {
+            
+            var result = await service.GetAll(cancellationToken);
+          
+            return Ok(result);
+        }
         // database de bulunmayan bir id li kayıt isteniyorsa null dönecek,
         // id si verilen entitynin bilgilerinin dönülmesi
     }

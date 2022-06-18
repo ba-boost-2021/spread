@@ -3,6 +3,7 @@ using Spread.Data.Requests.Contracts;
 using Spread.Data.Seed;
 using Spread.Test.Common;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Spread.IntegrationTests.TestFixtures
@@ -68,6 +69,13 @@ namespace Spread.IntegrationTests.TestFixtures
             var guid1 = new Guid("a0000000-0000-0000-0000-000000000001");
             var result = await Api.Get<LookUpDto>($"api/management/lookup/get/{guid1}");
             Assert.IsNull(result);
+        }
+        [Test]
+        public async Task ICan_List_Lookups()
+        {
+            var result = await Api.Get<List<LookUpDto>>("api/management/lookup/list");
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(17));
         }
     }
 }
