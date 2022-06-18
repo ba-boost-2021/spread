@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore.Query;
 using Spread.Data.Abstractions;
 using System.Linq.Expressions;
 
@@ -32,6 +33,11 @@ internal class Repository<T> : IRepository<T> where T : EntityBase
     public Task<T> Get(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
     {
         return dbContext.Set<T>().SingleOrDefaultAsync(predicate);
+    }
+    public Task<T> Get<TProperty>(Expression<Func<T, bool>> predicate, Expression<Func<T, TProperty>> include, CancellationToken cancellationToken)
+    {
+        return dbContext.Set<T>().Include(include).SingleOrDefaultAsync(predicate);
+        // dbContext.Lookups.Include(x=> x.Type).Where(...).FirstOrDefault
     }
 
     public Task<List<T>> GetAll(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)

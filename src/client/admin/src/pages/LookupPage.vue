@@ -7,8 +7,8 @@
         <table class="table table-dark">
           <thead>
             <tr>
-              <th>Id</th>
               <th>Name</th>
+              <th>Type Name</th>
               <th>Status</th>
               <th>Actions</th>
             </tr>
@@ -16,14 +16,12 @@
           <tbody class="table-border-bottom-0">
             <tr v-for="l in lookups" :key="l.id">
               <td>
-                <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                <strong>{{ l.id }}</strong>
+                <strong>{{ l.name }}</strong>
               </td>
-              <td>{{ l.name }}</td>
+              <td>{{ l.typeName }}</td>
               <td>
-                <span class="badge bg-label-primary me-1">{{
-                  l.isActive
-                }}</span>
+                <span v-if="l.isActive" class="badge bg-label-success me-1">Active</span>
+                <span v-if="!l.isActive" class="badge bg-label-danger me-1">Passive</span>
               </td>
               <td>
                 <div class="dropdown">
@@ -69,7 +67,9 @@ export default {
         }
       })
       .catch((error) => {
-        this.isFailed = true;
+        if (error) {
+          this.isFailed = true;
+        }
       });
   },
 };
