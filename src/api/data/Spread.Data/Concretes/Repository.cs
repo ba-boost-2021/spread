@@ -22,6 +22,7 @@ internal class Repository<T> : IRepository<T> where T : EntityBase
     public void Delete(T entity)
     {
         entity.IsDeleted = true;
+        entity.IsActive = false;
         Update(entity);
     }
 

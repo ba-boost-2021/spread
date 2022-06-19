@@ -35,5 +35,15 @@ namespace Spread.Api.Controllers.Management
             var result = await service.GetAll(cancellationToken);
             return Ok(result);
         }
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteLookUpById([FromRoute]Guid id, CancellationToken cancellationToken)
+        {
+            var result = await service.DeleteLookUpById(id, cancellationToken);
+            if(result)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }
