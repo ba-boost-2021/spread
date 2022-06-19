@@ -1,34 +1,25 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
+import store from "./store";
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    linkActiveClass: 'active',
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: () => import('../src/pages/HomePage.vue')
-        },
-        {
-            path: '/manage/lookups',
-            name: 'Lookups',
-            component: () => import('../src/pages/LookupPage.vue')
-        }
-    ]
-})
-// router.beforeEach((to, from, next,) => {
-//     if (to.name == "login") {
-//         //TODO: login sayfasına gidememeli!
-//         // if (session.isAuthenticated()) {
-//         //   router.back();
-//         // }
-//         return next();
-//     }
-//     if (!session.isAuthenticated()) {
-//         session.clear();
-//         router.push("/login");
-//     } else {
-//         return next();
-//     }
-
-// })
-export default router
+  history: createWebHistory(import.meta.env.BASE_URL),
+  linkActiveClass: "active",
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      meta: { title: "Karşılama Ekranı" },
+      component: () => import("../src/pages/HomePage.vue"),
+    },
+    {
+      path: "/manage/lookups",
+      name: "Lookups",
+      meta: { title: "Metaveriler" },
+      component: () => import("../src/pages/LookupPage.vue"),
+    },
+  ],
+});
+router.beforeEach((to, from, next) => {
+  store.commit("title/set", to.meta.title ?? "Spread - Sayfa Başlığı");
+  return next();
+});
+export default router;
