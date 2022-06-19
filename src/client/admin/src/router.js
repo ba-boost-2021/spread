@@ -5,6 +5,11 @@ const router = createRouter({
   linkActiveClass: "active",
   routes: [
     {
+      path: "/login",
+      name: "lohin",
+      component: () => import("../src/pages/Login.vue"),
+    },
+    {
       path: "/",
       name: "home",
       meta: { title: "Karşılama Ekranı" },
@@ -19,6 +24,12 @@ const router = createRouter({
   ],
 });
 router.beforeEach((to, from, next) => {
+    if (!store.state.session.token) {
+        if (to.path !== "/login") {
+            router.push("/login");
+            next();
+        }
+    }
   store.commit("title/set", to.meta.title ?? "Spread - Sayfa Başlığı");
   return next();
 });

@@ -1,9 +1,13 @@
 import { createStore } from "vuex";
-import titleStore from "./title"
+import createPersistedState from "vuex-persistedstate";
+import titleStore from "./title";
+import sessionStore from "./session";
 
 const store = createStore({
-    modules: {
-      title: titleStore,
-    }
-  });
- export default store;
+  plugins: [createPersistedState({ key: "persisted" })],
+  modules: {
+    title: titleStore,
+    session: sessionStore,
+  },
+});
+export default store;

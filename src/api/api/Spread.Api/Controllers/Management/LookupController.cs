@@ -14,6 +14,7 @@ namespace Spread.Api.Controllers.Management
         {
             this.service = service;
         }
+
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] NewLookupRequestDto data, CancellationToken cancellationToken)
         {
@@ -29,14 +30,10 @@ namespace Spread.Api.Controllers.Management
         }
 
         [HttpGet("list")]
-        [AllowAnonymous] //TODO:Authentication sürecinden sonra kaldırılıcak
         public async Task<IActionResult> GetLookups(CancellationToken cancellationToken)
         {
-            
             var result = await service.GetAll(cancellationToken);
             return Ok(result);
         }
-        // database de bulunmayan bir id li kayıt isteniyorsa null dönecek,
-        // id si verilen entitynin bilgilerinin dönülmesi
     }
 }

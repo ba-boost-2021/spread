@@ -11,12 +11,12 @@ var section = builder.Configuration.GetSection($"{nameof(Settings)}");
 var settings = section.Get<Settings>();
 #endregion Check Environment
 
-builder.Services.AddJwt(settings);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddData(builder.Configuration)
+builder.Services.AddJwt(settings)
+                .AddData(builder.Configuration)
                 .AddDataServices()
                 .AddAutoMapper();
 

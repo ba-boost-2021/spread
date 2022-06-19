@@ -5,7 +5,7 @@ namespace Microsoft.AspNetCore.Builder;
 
 public static class IServiceCollectionExtensions
 {
-    public static void AddJwt(this IServiceCollection services, Settings settings)
+    public static IServiceCollection AddJwt(this IServiceCollection services, Settings settings)
     {
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -24,5 +24,6 @@ public static class IServiceCollectionExtensions
 
         //Current USer tespiti için Middleware'den yönetiliyor
         services.AddScoped<IClaims, CurrentUserClaims>();
+        return services;
     }
 }

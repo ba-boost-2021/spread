@@ -34,7 +34,7 @@
                     </div>
                   </div>
                   <div class="flex-grow-1">
-                    <span class="fw-semibold d-block">Esengül Sümeyra</span>
+                    <span class="fw-semibold d-block">{{ $store.state.session.displayName}}</span>
                     <small class="text-muted">Site Yöneticisi</small>
                   </div>
                 </div>
