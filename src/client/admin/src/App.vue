@@ -5,9 +5,9 @@
       <div class="layout-page">
         <AppHeader />
         <div class="content-wrapper">
-           <div class="container-xxl flex-grow-1 container-p-y">
-                Page Content
-           </div>
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <RouterView />
+          </div>
         </div>
         <AppFooter />
         <div class="content-backdrop fade"></div>
@@ -21,12 +21,12 @@
 import AppHeader from "./Layout/AppHeader.vue";
 import AppFooter from "./Layout/AppFooter.vue";
 import AppLeftMenu from "./Layout/AppLeftMenu.vue";
- export default {
-   name: "App",
-   components: {
-     AppHeader,
-     AppLeftMenu,
-     AppFooter
-   }
- }
+export default {
+  name: "App",
+  components: {
+    AppHeader,
+    AppLeftMenu,
+    AppFooter,
+  },
+};
 </script>

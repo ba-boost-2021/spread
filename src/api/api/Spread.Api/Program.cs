@@ -20,6 +20,11 @@ builder.Services.AddData(builder.Configuration)
                 .AddDataServices()
                 .AddAutoMapper();
 
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddCors(option => { option.AddPolicy(builder.Environment.EnvironmentName, p => { p.AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader(); }); });
+}
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -29,6 +34,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+if (builder.Environment.IsDevelopment())
+{
+    app.UseCors(builder.Environment.EnvironmentName);
+}
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseClaims();

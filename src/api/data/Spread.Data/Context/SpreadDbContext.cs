@@ -6,6 +6,7 @@ public class SpreadDbContext : DbContext
 {
     public SpreadDbContext(DbContextOptions options) : base(options)
     {
+        this.ChangeTracker.LazyLoadingEnabled = false;
     }
 
     public DbSet<Block> Blocks { get; set; }
