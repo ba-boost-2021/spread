@@ -14,9 +14,10 @@ internal class GetLookupListQuery : IRequestHandler<LookupGetAllRequest, List<Lo
     {
         this.unitOfWork = unitOfWork;
     }
+
     public Task<List<LookUpDto>> Handle(LookupGetAllRequest request, CancellationToken cancellationToken)
     {
         var repository = unitOfWork.GetRepository<LookUp>();
-        return repository.GetAll<LookUpDto>(u=> !u.IsDeleted,u=>u.Name,cancellationToken);
+        return repository.GetAll<LookUpDto>(u => !u.IsDeleted, u => u.Name, cancellationToken);
     }
 }

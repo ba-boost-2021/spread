@@ -2,9 +2,8 @@
   <div>
     <div v-if="isFailed" class="alert alert-warning">işlem Başarısız</div>
     <div class="card">
-      <h5 class="card-header">Meta Veriler</h5>
       <div class="table-responsive text-nowrap">
-        <table class="table table-dark">
+        <table class="table">
           <thead>
             <tr>
               <th>Name</th>

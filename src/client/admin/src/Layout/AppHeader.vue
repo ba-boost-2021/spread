@@ -12,6 +12,7 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+      <h4 class="mt-3">{{$store.state.title.title}}</h4>
       <ul class="navbar-nav flex-row align-items-center ms-auto">
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
           <a
@@ -33,7 +34,7 @@
                     </div>
                   </div>
                   <div class="flex-grow-1">
-                    <span class="fw-semibold d-block">Esengül Sümeyra</span>
+                    <span class="fw-semibold d-block">{{ $store.state.session.displayName}}</span>
                     <small class="text-muted">Site Yöneticisi</small>
                   </div>
                 </div>
