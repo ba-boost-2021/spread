@@ -75,6 +75,7 @@ namespace Spread.IntegrationTests.TestFixtures
             var result = await Api.Get<LookUpDto>($"api/management/lookup/get/{guid1}");
             Assert.IsNull(result);
         }
+
         [Test]
         [Order(1)]
         public async Task ICan_List_Lookups()

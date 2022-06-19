@@ -32,12 +32,12 @@ internal class Repository<T> : IRepository<T> where T : EntityBase
 
     public Task<T> Get(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
     {
-        return dbContext.Set<T>().SingleOrDefaultAsync(predicate);
+        return dbContext.Set<T>().SingleOrDefaultAsync(predicate, cancellationToken);
     }
-    public Task<T> Get<TProperty>(Expression<Func<T, bool>> predicate, Expression<Func<T, TProperty>> include, CancellationToken cancellationToken)
+
+    public Task<TDto> Get<TDto>(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)
     {
-        return dbContext.Set<T>().Include(include).SingleOrDefaultAsync(predicate);
-        // dbContext.Lookups.Include(x=> x.Type).Where(...).FirstOrDefault
+        return dbContext.Set<T>().Where(predicate).ProjectTo<TDto>(mapper.ConfigurationProvider).SingleOrDefaultAsync(cancellationToken);
     }
 
     public Task<List<T>> GetAll(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken)

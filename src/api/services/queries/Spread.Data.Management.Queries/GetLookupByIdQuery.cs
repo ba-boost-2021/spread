@@ -21,12 +21,6 @@ internal class GetLookupByIdQuery : IRequestHandler<GetLookupByIdRequest, LookUp
     public async Task<LookUpDto> Handle(GetLookupByIdRequest request, CancellationToken cancellationToken)
     {
         var repository = unitOfWork.GetRepository<LookUp>();
-        var entity = await repository.Get(f => !f.IsDeleted && f.Id == request.Id, f=> f.Type, cancellationToken);
-        if(entity is null)
-        {
-            return null;
-        }
-        var result = mapper.Map<LookUpDto>(entity);
-        return result;
+        return await repository.Get<LookUpDto>(f => !f.IsDeleted && f.Id == request.Id, cancellationToken);
     }
 }

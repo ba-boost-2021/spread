@@ -11,8 +11,7 @@ namespace Spread.Mapper.Profiles
             CreateMap<NewLookupRequestDto, LookUp>();
             CreateMap<NewLookupTypeRequestDto, LookupType>();
             CreateMap<NewSystemParameterRequestDto, SystemParameter>();
-            CreateMap<LookUp, LookUpDto>()
-                    .ForMember(f => f.TypeName, c => c.MapFrom(m => m.Type.Name));
+            CreateMap<LookUp, LookUpDto>();
             CreateMap<LookupType, LookupTypeDto>();
             CreateMap<SystemParameter, SystemParameterDto>();
         }
