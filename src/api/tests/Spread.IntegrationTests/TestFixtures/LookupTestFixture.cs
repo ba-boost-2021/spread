@@ -92,6 +92,8 @@ namespace Spread.IntegrationTests.TestFixtures
         {       
             var result = await Api.Delete<bool>($"api/management/lookup/delete/{id}");
             Assert.That(result, Is.True);
+            var result2 = await Api.Get<LookUpDto>($"api/management/lookup/get/{id}");
+            Assert.IsNull(result2);
         }
     }
 }

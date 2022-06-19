@@ -19,8 +19,12 @@
               </td>
               <td>{{ l.typeName }}</td>
               <td>
-                <span v-if="l.isActive" class="badge bg-label-success me-1">Active</span>
-                <span v-if="!l.isActive" class="badge bg-label-danger me-1">Passive</span>
+                <span v-if="l.isActive" class="badge bg-label-success me-1"
+                  >Active</span
+                >
+                <span v-if="!l.isActive" class="badge bg-label-danger me-1"
+                  >Passive</span
+                >
               </td>
               <td>
                 <div class="dropdown">
@@ -35,7 +39,7 @@
                     <a class="dropdown-item" href="javascript:void(0);"
                       ><i class="bx bx-edit-alt me-1"></i> Edit</a
                     >
-                    <a class="dropdown-item" href="javascript:void(0);"
+                    <a class="dropdown-item" @click="remove(l.id)"
                       ><i class="bx bx-trash me-1"></i> Delete</a
                     >
                   </div>
@@ -58,18 +62,33 @@ export default {
     };
   },
   mounted() {
-    this.$ajax
-      .get("api/management/lookup/list")
-      .then((response) => {
-        if (response.data) {
-          this.lookups = response.data;
-        }
-      })
-      .catch((error) => {
-        if (error) {
-          this.isFailed = true;
-        }
-      });
+    this.loadData();
+  },
+  methods: {
+    remove(id) {
+      this.$ajax
+        .delete(`api/management/lookup/delete/${id}`)
+        .then((response) => {
+          if (response.data) {
+            //TODO: toast
+            this.loadData();
+          }
+        });
+    },
+    loadData() {
+      this.$ajax
+        .get("api/management/lookup/list")
+        .then((response) => {
+          if (response.data) {
+            this.lookups = response.data;
+          }
+        })
+        .catch((error) => {
+          if (error) {
+            this.isFailed = true;
+          }
+        });
+    },
   },
 };
 </script>

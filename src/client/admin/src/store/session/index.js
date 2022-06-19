@@ -11,5 +11,9 @@ export default {
     setDisplayName(state, value) {
       state.displayName = value;
     },
+    logOut(state) {
+      state.displayName = null;
+      state.token = null;
+    }
   },
 };

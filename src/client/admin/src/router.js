@@ -24,12 +24,11 @@ const router = createRouter({
   ],
 });
 router.beforeEach((to, from, next) => {
-    if (!store.state.session.token) {
-        if (to.path !== "/login") {
-            router.push("/login");
-            next();
-        }
+  if (!store.state.session.token) {
+    if (to.path !== "/login") {
+      router.push("/login");
     }
+  }
   store.commit("title/set", to.meta.title ?? "Spread - Sayfa Başlığı");
   return next();
 });
