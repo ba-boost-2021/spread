@@ -31,12 +31,7 @@
         </a>
 
         <ul class="menu-sub" v-if="m.children?.length > 0">
-          <li
-            class="menu-item"
-            
-            v-for="s in m.children"
-            :key="s"
-          >
+          <li class="menu-item" v-for="s in m.children" :key="s">
             <RouterLink class="menu-link" :to="s.to">
               <div>{{ s.title }}</div>
             </RouterLink>
@@ -52,7 +47,13 @@ export default {
   data: () => {
     return {
       menu: [
-        { key: 1, title: "Karşılama Ekranı", to: "/", isActive: false, isOpen: false, },
+        {
+          key: 1,
+          title: "Karşılama Ekranı",
+          to: "/",
+          isActive: false,
+          isOpen: false,
+        },
         {
           key: 2,
           title: "Yönetim",
@@ -67,6 +68,11 @@ export default {
             {
               title: "Metaveri Tanımları",
               to: "/manage/lookups",
+              parent: 2,
+            },
+            {
+              title: "Metaveri Tanımları",
+              to: "/manage/lookupTypes",
               parent: 2,
             },
             {
@@ -88,7 +94,13 @@ export default {
             { title: "Hesap Kurtarma", to: "/user/recover", parent: 3 },
           ],
         },
-        { key: 4, title: "Şikayetler", to: "/abuse-reports", isActive: false, isOpen: false },
+        {
+          key: 4,
+          title: "Şikayetler",
+          to: "/abuse-reports",
+          isActive: false,
+          isOpen: false,
+        },
       ],
     };
   },
@@ -96,12 +108,12 @@ export default {
     isCurrentPath(s) {
       //TODO: Show current menu on refresh
       const isCurrent = s.to === this.$route.path;
-      this.menu.forEach(f => {
+      this.menu.forEach((f) => {
         f.isActive = false;
         f.isOpen = false;
       });
       if (isCurrent) {
-        const parent = this.menu.find(f => f.key === s.parent);
+        const parent = this.menu.find((f) => f.key === s.parent);
         parent.isActive = true;
         parent.isOpen = true;
       }

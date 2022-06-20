@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: "/login",
-      name: "lohin",
+      name: "login",
       component: () => import("../src/pages/Login.vue"),
     },
     {
@@ -20,6 +20,12 @@ const router = createRouter({
       name: "Lookups",
       meta: { title: "Metaveriler" },
       component: () => import("../src/pages/LookupPage.vue"),
+    },
+    {
+      path: "/manage/lookupTypes",
+      name: "LookupTypes",
+      meta: { title: "Metaveriler" },
+      component: () => import("../src/pages/LookupTypePage.vue"),
     },
   ],
 });

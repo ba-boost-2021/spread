@@ -7,15 +7,14 @@
           <thead>
             <tr>
               <th>Name</th>
-              >
+              <th>Status</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-            <tr v-for="l in lookuptypes" :key="l.id">
+            <tr v-for="l in lookupTypes" :key="l.id">
               <td>
                 <strong>{{ l.name }}</strong>
               </td>
-              <td>{{ l.typeName }}</td>
               <td>
                 <span v-if="l.isActive" class="badge bg-label-success me-1"
                   >Active</span
@@ -51,6 +50,43 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name: "LookupTypePage",
+  data() {
+    return {
+      lookupTypes: [],
+      isFailed: false,
+    };
+  },
+  mounted() {
+    this.loadData();
+  },
+  methods: {
+    remove(id) {
+      this.$ajax
+        .delete(`api/management/lookupType/delete/${id}`)
+        .then((response) => {
+          if (response.data) {
+            //TODO: toast
+            this.loadData();
+          }
+        });
+    },
+    loadData() {
+      this.$ajax
+        .get("api/management/lookupType/list")
+        .then((response) => {
+          if (response.data) {
+            this.lookupTypes = response.data;
+          }
+        })
+        .catch((error) => {
+          if (error) {
+            this.isFailed = true;
+          }
+        });
+    },
+  },
+};
 </script>
 <style></style>
