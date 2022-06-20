@@ -31,5 +31,11 @@ namespace Spread.Api.Controllers.Management
             //}
             return Ok(result);
         }
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteSystemParameterById([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            var result = await service.DeleteSystemParameterById(id, cancellationToken);
+            return Ok(result);
+        }
     }
 }

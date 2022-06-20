@@ -34,4 +34,5 @@ internal class NewLookupCommand : IRequestHandler<NewLookupRequest, bool>
         var result = await unitOfWork.SaveChanges(cancellationToken);
         return result > 0;
     }
+
 }
