@@ -32,6 +32,18 @@ public class WebApiWrapper
         var json = await response.Content.ReadAsStringAsync();
         return string.IsNullOrEmpty(json) ? default(T) : JsonSerializer.Deserialize<T>(json, serializerOptions);
     }
+    public async Task<TResult> Delete<TResult>(string url)
+    {
+        SetupHeader();
+        var response = await client.DeleteAsync(url);
+        if (!response.IsSuccessStatusCode)
+        {
+            Assert.Fail($"{url}\n{response.StatusCode}");
+            return default(TResult);
+        }
+        var json = await response.Content.ReadAsStringAsync();
+        return string.IsNullOrEmpty(json) ? default(TResult) : JsonSerializer.Deserialize<TResult>(json, serializerOptions);
+    }
 
     public async Task<TResult> Delete<TResult>(string url)
     {
@@ -63,6 +75,7 @@ public class WebApiWrapper
         }
         return JsonSerializer.Deserialize<TResult>(json, serializerOptions);
     }
+
 
     private void SetupHeader()
     {

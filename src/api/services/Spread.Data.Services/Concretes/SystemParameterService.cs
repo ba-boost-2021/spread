@@ -20,6 +20,11 @@ namespace Spread.Data.Services.Concretes
             return mediator.Send(new NewSystemParameterRequest(data), cancellationToken);
         }
 
+        public Task<bool> DeleteSystemParameterById(Guid id, CancellationToken cancellationToken)
+        {
+            return mediator.Send(new DeleteSystemParameterByIdRequest(id), cancellationToken);
+        }
+
         public Task<SystemParameterDto> GetSystemParameterById(Guid id, CancellationToken cancellationToken)
         {
             return mediator.Send(new GetSystemParameterByIdRequest(id), cancellationToken);

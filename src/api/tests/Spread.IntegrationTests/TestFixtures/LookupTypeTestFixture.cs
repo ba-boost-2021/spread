@@ -16,6 +16,7 @@ namespace Spread.IntegrationTests.TestFixtures
         }
 
         [Test]
+        [Order(1)]
         public async Task I_Can_Create_LookupType()
         {
             var content = new NewLookupTypeRequestDto
@@ -28,6 +29,7 @@ namespace Spread.IntegrationTests.TestFixtures
 
         [TestCase("")]
         [TestCase(null)]
+        [Order(2)]
         public async Task I_Cant_Create_LookupType(string name)
         {
             var content = new NewLookupTypeRequestDto
@@ -39,6 +41,7 @@ namespace Spread.IntegrationTests.TestFixtures
         }
 
         [Test]
+        [Order(2)]
         public async Task I_Cant_Create_LookupType_With_Existing_Name()
         {
             var content = new NewLookupTypeRequestDto
@@ -49,6 +52,7 @@ namespace Spread.IntegrationTests.TestFixtures
             Assert.That(result, Is.False);
         }
         [Test]
+        [Order(2)]
         public async Task I_Can_GetById()
         {
             var guid = new Guid("00000000-0000-0000-0000-000000000001");
@@ -58,12 +62,22 @@ namespace Spread.IntegrationTests.TestFixtures
             Assert.That(result.Name, Is.EqualTo("Test LookupType2"));
         }
         [Test]
+        [Order(2)]
         public async Task ICanNot_Get_LookupType_ById_If_EntityNot_Exists()
         {
             var guid1 = new Guid("a0000000-0000-0000-0000-000000000001");
-            var result = await Api.Get<LookupTypeDto>($"api/management/lookup/get/{guid1}");
+            var result = await Api.Get<LookupTypeDto>($"api/management/lookuptype/get/{guid1}");
             Assert.IsNull(result);
         }
 
+        [TestCase("00000000-0000-0000-0000-000000000001")]
+        [Order(3)]
+        public async Task ICan_Delete_LookUpType_ById(Guid id)
+        {
+            var result = await Api.Delete<bool>($"api/management/lookuptype/delete/{id}");
+            Assert.That(result, Is.True);
+            var result2 = await Api.Get<LookupTypeDto>($"api/management/lookuptype/get/{id}");
+            Assert.IsNull(result2);
+        }
     }
 }
