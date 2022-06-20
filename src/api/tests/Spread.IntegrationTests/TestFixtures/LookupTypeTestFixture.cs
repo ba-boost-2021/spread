@@ -2,6 +2,7 @@
 using Spread.Data.Requests.Contracts;
 using Spread.Test.Common;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Spread.IntegrationTests.TestFixtures
@@ -78,6 +79,14 @@ namespace Spread.IntegrationTests.TestFixtures
             Assert.That(result, Is.True);
             var result2 = await Api.Get<LookupTypeDto>($"api/management/lookuptype/get/{id}");
             Assert.IsNull(result2);
+        }
+        [Test]
+        [Order(1)]
+        public async Task ICan_List_LookupTypes()
+        {
+            var result = await Api.Get<List<LookupTypeDto>>("api/management/lookuptype/list");
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.Count, Is.EqualTo(5));
         }
     }
 }

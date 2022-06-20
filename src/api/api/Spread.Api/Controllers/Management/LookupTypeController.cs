@@ -34,5 +34,11 @@ namespace Spread.Api.Controllers.Management
             return Ok(result);
         }
 
+        [HttpGet("list")]
+        public async Task<IActionResult> GetLookupTypes(CancellationToken cancellationToken)
+        {
+            var result = await service.GetAll(cancellationToken);
+            return Ok(result);
+        }
     }
 }

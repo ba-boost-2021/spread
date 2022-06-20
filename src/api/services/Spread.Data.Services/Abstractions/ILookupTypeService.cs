@@ -11,6 +11,7 @@ namespace Spread.Data.Services.Abstractions
         Task<bool> CreateLookupType(NewLookupTypeRequestDto data, CancellationToken cancellationToken);
         Task<LookupTypeDto> LookupTypeGetById(Guid id, CancellationToken cancellationToken);
         Task<bool> LookupTypeDeleteById(Guid id, CancellationToken cancellationToken);
+        Task<List<LookupTypeDto>> GetAll(CancellationToken cancellationToken);
     }
 
 }

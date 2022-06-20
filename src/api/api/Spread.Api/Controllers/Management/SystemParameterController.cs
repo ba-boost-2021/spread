@@ -37,5 +37,12 @@ namespace Spread.Api.Controllers.Management
             var result = await service.DeleteSystemParameterById(id, cancellationToken);
             return Ok(result);
         }
+
+        [HttpGet("list")]
+        public async Task<IActionResult> GetAllSystemParameters(CancellationToken cancellationToken)
+        {
+            var result = await service.GetAll(cancellationToken);
+            return Ok(result);
+        }
     }
 }
