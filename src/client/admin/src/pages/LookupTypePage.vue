@@ -7,17 +7,14 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Type Name</th>
               <th>Status</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
-            <tr v-for="l in lookups" :key="l.id">
+            <tr v-for="l in lookupTypes" :key="l.id">
               <td>
                 <strong>{{ l.name }}</strong>
               </td>
-              <td>{{ l.typeName }}</td>
               <td>
                 <span v-if="l.isActive" class="badge bg-label-success me-1"
                   >Active</span
@@ -54,10 +51,10 @@
 </template>
 <script>
 export default {
-  name: "LookupPage",
+  name: "LookupTypePage",
   data() {
     return {
-      lookups: [],
+      lookupTypes: [],
       isFailed: false,
     };
   },
@@ -67,7 +64,7 @@ export default {
   methods: {
     remove(id) {
       this.$ajax
-        .delete(`api/management/lookup/delete/${id}`)
+        .delete(`api/management/lookupType/delete/${id}`)
         .then((response) => {
           if (response.data) {
             //TODO: toast
@@ -77,10 +74,10 @@ export default {
     },
     loadData() {
       this.$ajax
-        .get("api/management/lookup/list")
+        .get("api/management/lookupType/list")
         .then((response) => {
           if (response.data) {
-            this.lookups = response.data;
+            this.lookupTypes = response.data;
           }
         })
         .catch((error) => {

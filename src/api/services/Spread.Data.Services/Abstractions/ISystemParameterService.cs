@@ -4,5 +4,7 @@
     {
         Task<bool> CreateSystemParameter(NewSystemParameterRequestDto data, CancellationToken cancellationToken);
         Task<SystemParameterDto> GetSystemParameterById(Guid id, CancellationToken cancellationToken);
+        Task<bool> DeleteSystemParameterById(Guid id, CancellationToken cancellationToken);
+        Task<List<SystemParameterDto>> GetAll(CancellationToken cancellationToken);
     }
 }

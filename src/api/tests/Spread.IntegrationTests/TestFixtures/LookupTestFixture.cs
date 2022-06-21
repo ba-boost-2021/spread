@@ -84,5 +84,16 @@ namespace Spread.IntegrationTests.TestFixtures
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Count, Is.EqualTo(16));
         }
+
+       
+        [TestCase("00000000-0000-0000-0000-000000000001")]
+        [Order(3)]
+        public async Task ICan_Delete_LookUp_ById(Guid id)
+        {       
+            var result = await Api.Delete<bool>($"api/management/lookup/delete/{id}");
+            Assert.That(result, Is.True);
+            var result2 = await Api.Get<LookUpDto>($"api/management/lookup/get/{id}");
+            Assert.IsNull(result2);
+        }
     }
 }

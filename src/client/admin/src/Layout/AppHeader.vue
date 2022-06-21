@@ -59,7 +59,7 @@
               <div class="dropdown-divider"></div>
             </li>
             <li>
-              <a class="dropdown-item" href="auth-login-basic.html">
+              <a class="dropdown-item" @click="logOut">
                 <i class="bx bx-power-off me-2"></i>
                 <span class="align-middle">Çıkış Yap</span>
               </a>
@@ -74,5 +74,13 @@
 <script>
 export default {
   name: "AppHeader",
+  methods: {
+    logOut(){
+      this.$store.commit("session/logOut");
+      setTimeout(() => {
+        location.reload();
+      }, 500);
+    }
+  },
 };
 </script>

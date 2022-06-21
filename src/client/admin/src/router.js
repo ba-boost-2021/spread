@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: "/login",
-      name: "lohin",
+      name: "login",
       component: () => import("../src/pages/Login.vue"),
     },
     {
@@ -21,15 +21,20 @@ const router = createRouter({
       meta: { title: "Metaveriler" },
       component: () => import("../src/pages/LookupPage.vue"),
     },
+    {
+      path: "/manage/lookupTypes",
+      name: "LookupTypes",
+      meta: { title: "Metaveriler" },
+      component: () => import("../src/pages/LookupTypePage.vue"),
+    },
   ],
 });
 router.beforeEach((to, from, next) => {
-    if (!store.state.session.token) {
-        if (to.path !== "/login") {
-            router.push("/login");
-            next();
-        }
+  if (!store.state.session.token) {
+    if (to.path !== "/login") {
+      router.push("/login");
     }
+  }
   store.commit("title/set", to.meta.title ?? "Spread - Sayfa Başlığı");
   return next();
 });

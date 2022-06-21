@@ -31,5 +31,18 @@ namespace Spread.Api.Controllers.Management
             //}
             return Ok(result);
         }
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteSystemParameterById([FromRoute] Guid id, CancellationToken cancellationToken)
+        {
+            var result = await service.DeleteSystemParameterById(id, cancellationToken);
+            return Ok(result);
+        }
+
+        [HttpGet("list")]
+        public async Task<IActionResult> GetAllSystemParameters(CancellationToken cancellationToken)
+        {
+            var result = await service.GetAll(cancellationToken);
+            return Ok(result);
+        }
     }
 }

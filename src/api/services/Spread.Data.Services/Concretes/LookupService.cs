@@ -1,4 +1,6 @@
-﻿namespace Spread.Data.Services.Concretes;
+﻿using Spread.Data.Requests.Queries;
+
+namespace Spread.Data.Services.Concretes;
 
 internal class LookupService : ILookupService
 {
@@ -12,6 +14,11 @@ internal class LookupService : ILookupService
     public Task<bool> CreateLookup(NewLookupRequestDto data, CancellationToken cancellationToken)
     {
         return mediator.Send(new NewLookupRequest(data), cancellationToken);
+    }
+
+    public Task<bool> DeleteLookUpById(Guid id, CancellationToken cancellationToken)
+    {
+        return mediator.Send(new DeleteLookUpByIdRequest(id), cancellationToken);
     }
 
     public Task<LookUpDto> GetById(Guid id, CancellationToken cancellationToken)
