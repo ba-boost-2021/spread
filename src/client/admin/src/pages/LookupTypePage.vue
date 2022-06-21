@@ -34,10 +34,10 @@
                   </button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                      ><i class="bx bx-edit-alt me-1"></i> Düzenle</a
                     >
                     <a class="dropdown-item" @click="remove(l.id)"
-                      ><i class="bx bx-trash me-1"></i> Delete</a
+                      ><i class="bx bx-trash me-1"></i> Sil</a
                     >
                   </div>
                 </div>
@@ -48,8 +48,10 @@
       </div>
     </div>
   </div>
+  <DeleteConfirm ref="deleteModal" @yes="deleteOk" />
 </template>
 <script>
+import DeleteConfirm from "../components/modals/LookupTypeDeleteConfirm.vue";
 export default {
   name: "LookupTypePage",
   data() {
@@ -58,19 +60,15 @@ export default {
       isFailed: false,
     };
   },
+  components: {
+    DeleteConfirm,
+  },
   mounted() {
     this.loadData();
   },
   methods: {
     remove(id) {
-      this.$ajax
-        .delete(`api/management/lookupType/delete/${id}`)
-        .then((response) => {
-          if (response.data) {
-            //TODO: toast
-            this.loadData();
-          }
-        });
+      this.$refs.deleteModal.open(id);
     },
     loadData() {
       this.$ajax
@@ -85,6 +83,9 @@ export default {
             this.isFailed = true;
           }
         });
+    },
+    deleteOk() {
+      this.loadData();
     },
   },
 };
