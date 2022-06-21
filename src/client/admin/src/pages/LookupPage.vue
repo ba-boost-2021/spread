@@ -20,10 +20,10 @@
               <td>{{ l.typeName }}</td>
               <td>
                 <span v-if="l.isActive" class="badge bg-label-success me-1"
-                  >Active</span
+                  >Aktif</span
                 >
                 <span v-if="!l.isActive" class="badge bg-label-danger me-1"
-                  >Passive</span
+                  >Pasif</span
                 >
               </td>
               <td>
@@ -37,10 +37,10 @@
                   </button>
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                      ><i class="bx bx-edit-alt me-1"></i> Düzenle</a
                     >
                     <a class="dropdown-item" @click="remove(l.id)"
-                      ><i class="bx bx-trash me-1"></i> Delete</a
+                      ><i class="bx bx-trash me-1"></i> Sil</a
                     >
                   </div>
                 </div>

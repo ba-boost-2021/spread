@@ -21,17 +21,22 @@
     <ul class="menu-inner py-1">
       <li
         class="menu-item"
-        :class="{ active: m.isActive, open: m.isOpen }"
+        :class="{ active: isCurrentPathOnRootMenu(m), open: m.isOpen }"
         v-for="m in menu"
         :key="m.title"
       >
-        <a class="menu-link" :class="{ 'menu-toggle': m.children?.length > 0 }">
+        <a class="menu-link menu-toggle" v-if="m.children?.length > 0">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div>{{ m.title }}</div>
         </a>
 
+        <RouterLink :to="m.to" class="menu-link" v-else>
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div>{{ m.title }}</div>
+        </RouterLink>
+
         <ul class="menu-sub" v-if="m.children?.length > 0">
-          <li class="menu-item" v-for="s in m.children" :key="s">
+          <li class="menu-item" :class="{ 'active' : isCurrentPath(s)}" v-for="s in m.children" :key="s">
             <RouterLink class="menu-link" :to="s.to">
               <div>{{ s.title }}</div>
             </RouterLink>
@@ -62,17 +67,12 @@ export default {
           children: [
             {
               title: "Metaveri Başlıkları",
-              to: "/manage/titles",
+              to: "/manage/lookupTypes",
               parent: 2,
             },
             {
               title: "Metaveri Tanımları",
               to: "/manage/lookups",
-              parent: 2,
-            },
-            {
-              title: "Metaveri Tanımları",
-              to: "/manage/lookupTypes",
               parent: 2,
             },
             {
@@ -106,19 +106,29 @@ export default {
   },
   methods: {
     isCurrentPath(s) {
-      //TODO: Show current menu on refresh
       const isCurrent = s.to === this.$route.path;
-      this.menu.forEach((f) => {
-        f.isActive = false;
-        f.isOpen = false;
-      });
       if (isCurrent) {
         const parent = this.menu.find((f) => f.key === s.parent);
+        const others = this.menu.filter((f) => f.key !== s.parent);
         parent.isActive = true;
         parent.isOpen = true;
+        others.forEach(m => {
+          m.isActive = false;
+          m.isOpen = false;
+        });
       }
       return isCurrent;
     },
+    isCurrentPathOnRootMenu(m) {
+      if (m.children?.length > 0) {
+        let isActive = m.children.some(s => s.to === this.$route.path);
+        if (isActive) {
+          return true;
+        }
+      }
+      const isCurrent = m.to && m.to === this.$route.path;
+      return isCurrent;
+    }
   },
 };
 </script>
