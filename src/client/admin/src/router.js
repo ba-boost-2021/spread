@@ -16,6 +16,12 @@ const router = createRouter({
       component: () => import("../src/pages/HomePage.vue"),
     },
     {
+      path: "/user/list",
+      name: "userListPage",
+      meta: { title: "Kullanıcı Yönetimi" },
+      component: () => import("../src/pages/UserPage.vue"),
+    },
+    {
       path: "/manage/lookups",
       name: "Lookups",
       meta: { title: "Metaveriler" },

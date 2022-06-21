@@ -33,7 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 if (builder.Environment.IsDevelopment())
 {
     app.UseCors(builder.Environment.EnvironmentName);
