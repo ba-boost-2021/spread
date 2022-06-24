@@ -6,5 +6,6 @@
         Task<LookUpDto> GetById(Guid id, CancellationToken cancellationToken);
         Task<List<LookUpDto>> GetAll(CancellationToken cancellationToken);
         Task<bool> DeleteLookUpById(Guid id, CancellationToken cancellationToken);
+        Task<bool> EditLookUp(Guid id,EditLookupRequestDto dto, CancellationToken cancellationToken);
     }
 }

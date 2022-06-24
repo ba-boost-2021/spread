@@ -1,6 +1,6 @@
 ﻿namespace Spread.Data.Requests.Contracts;
 
-public class NewLookupRequestDto
+public class EditLookupRequestDto
 {
     public string Name { get; set; }
     public Guid TypeId { get; set; }

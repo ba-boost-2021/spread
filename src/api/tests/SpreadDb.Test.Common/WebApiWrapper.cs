@@ -62,6 +62,23 @@ public class WebApiWrapper
         }
         return JsonSerializer.Deserialize<TResult>(json, serializerOptions);
     }
+    public async Task<TResult> Put<TDto, TResult>(string url, TDto user)
+    {
+        var content = new StringContent(JsonSerializer.Serialize(user, serializerOptions), Encoding.UTF8, "application/json");
+        SetupHeader();
+        var response = await client.PutAsync(url, content);
+        if (!response.IsSuccessStatusCode)
+        {
+            Assert.Fail($"{url}\n{response.StatusCode}");
+            return default(TResult);
+        }
+        var json = await response.Content.ReadAsStringAsync();
+        if (string.IsNullOrEmpty(json))
+        {
+            return default(TResult);
+        }
+        return JsonSerializer.Deserialize<TResult>(json, serializerOptions);
+    }
 
 
     private void SetupHeader()
@@ -78,4 +95,6 @@ public class WebApiWrapper
     {
         factory.Clean();
     }
+
+
 }

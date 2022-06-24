@@ -21,6 +21,11 @@ internal class LookupService : ILookupService
         return mediator.Send(new DeleteLookUpByIdRequest(id), cancellationToken);
     }
 
+    public Task<bool> EditLookUp(Guid id, EditLookupRequestDto data, CancellationToken cancellationToken)
+    {
+        return mediator.Send(new EditLookupRequest(id,data), cancellationToken);
+    }
+
     public Task<LookUpDto> GetById(Guid id, CancellationToken cancellationToken)
     {
         return mediator.Send(new GetLookupByIdRequest(id), cancellationToken);

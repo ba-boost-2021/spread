@@ -27,6 +27,9 @@ export default {
       delete: function (url) {
         return instance.delete(url, addHeader());
       },
+      put: function (url,data) {
+        return instance.put(url,data, addHeader());
+      },
     };
     app.config.globalProperties.$ajax = ajax;
   },

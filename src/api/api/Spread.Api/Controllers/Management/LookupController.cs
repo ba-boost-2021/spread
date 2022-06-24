@@ -45,5 +45,16 @@ namespace Spread.Api.Controllers.Management
             }
             return BadRequest(result);
         }
+        [HttpPut("edit/{id}")]
+        public async Task<IActionResult> EditLookUp([FromRoute] Guid id,[FromBody] EditLookupRequestDto dto, CancellationToken cancellationToken)
+        {
+            
+            var result = await service.EditLookUp(id,dto, cancellationToken);
+            if (result)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

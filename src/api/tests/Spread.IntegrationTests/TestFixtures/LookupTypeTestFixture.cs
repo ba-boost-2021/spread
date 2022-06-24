@@ -88,5 +88,6 @@ namespace Spread.IntegrationTests.TestFixtures
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Count, Is.EqualTo(5));
         }
+ 
     }
 }

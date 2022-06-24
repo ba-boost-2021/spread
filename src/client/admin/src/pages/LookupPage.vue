@@ -35,9 +35,15 @@
                   >
                     <i class="bx bx-dots-vertical-rounded"></i>
                   </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:void(0);"
-                      ><i class="bx bx-edit-alt me-1"></i> Düzenle</a
+                  <div class="dropdown-menu" > 
+                  
+                    <a class="dropdown-item" @click="getbyid(l.id)" 
+                      ><i
+                        class="bx bx-edit-alt me-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#LookupEditModal"
+                      ></i>
+                      Düzenle</a
                     >
                     <a class="dropdown-item" @click="remove(l.id)"
                       ><i class="bx bx-trash me-1"></i> Sil</a
@@ -52,9 +58,11 @@
     </div>
   </div>
   <DeleteConfirm ref="deleteModal" @on-confirm="loadData" />
+  <Update ref="editModal" @yes="editOk" />
 </template>
 <script>
 import DeleteConfirm from "../components/modals/LookupPageDeleteConfirm.vue";
+import Update from "../components/LookupEditModal.vue";
 export default {
   name: "LookupPage",
   data() {
@@ -65,17 +73,22 @@ export default {
   },
   components: {
     DeleteConfirm,
+    Update,
   },
   mounted() {
     this.loadData();
   },
+
   methods: {
     remove(id) {
       this.$refs.deleteModal.open(id);
     },
+    getbyid(id) {
+      this.$refs.editModal.open(id);
+    },
     loadData() {
       this.$ajax
-        .get("api/management/lookup/list")
+        .get(`api/management/lookup/list`)
         .then((response) => {
           if (response.data) {
             this.lookups = response.data;
@@ -86,6 +99,9 @@ export default {
             this.isFailed = true;
           }
         });
+    },
+    editOk() {
+      this.loadData();
     },
   },
 };
