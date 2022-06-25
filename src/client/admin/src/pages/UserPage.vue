@@ -14,7 +14,6 @@
             <td>
               <strong>{{ u.userName }}</strong>
             </td>
-
             <td>
               {{ u.eMail }}
             </td>
@@ -31,9 +30,6 @@
 export default {
   data() {
     return {
-      userName: null,
-      eMail: null,
-      createdAt: null,
       userList: [],
       isFailed: false,
     };
@@ -59,4 +55,3 @@ export default {
   },
 };
 </script>
-<style></style>
