@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="notSuccess" class="alert alert-warning">işlem Başarısız</div>
+    <div v-if="hasError" class="alert alert-warning">işlem Başarısız</div>
     <div
       class="modal fade"
       id="lookupDeleteModal"
@@ -29,7 +29,7 @@
               data-bs-dismiss="modal"
               @click="confirm"
             >
-              Onay
+              Evet
             </button>
           </div>
         </div>
@@ -41,38 +41,39 @@
 import { bootstrap } from "../../helpers/root/bootstrap";
 
 export default {
-  emits: ["yes"],
+  emits: ["onConfirm"],
   name: "DeleteConfirm",
   data() {
     return {
-      instance: null,
+      modal: null,
       selectedId: null,
-      notSuccess: false,
+      hasError: false,
     };
   },
   mounted() {
-    this.instance = new bootstrap.Modal(
+    this.modal = new bootstrap.Modal(
       document.getElementById("lookupDeleteModal")
     );
   },
   methods: {
     confirm() {
+      this.hasError = false;
       this.$ajax
         .delete(`api/management/lookup/delete/${this.selectedId}`)
         .then((response) => {
           if (response.data) {
-            this.$emit("yes");
-            this.instance.hide();
+            this.$emit("onConfirm");
+            this.modal.hide();
           }
         })
         .catch((error) => {
           if (error) {
-            this.notSuccess = true;
+            this.hasError = true;
           }
         });
     },
     open(id) {
-      this.instance.show();
+      this.modal.show();
       this.selectedId = id;
     },
   },

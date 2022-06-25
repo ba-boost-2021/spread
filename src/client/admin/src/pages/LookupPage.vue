@@ -51,7 +51,7 @@
       </div>
     </div>
   </div>
-  <DeleteConfirm ref="deleteModal" @yes="deleteOk" />
+  <DeleteConfirm ref="deleteModal" @on-confirm="loadData" />
 </template>
 <script>
 import DeleteConfirm from "../components/modals/LookupPageDeleteConfirm.vue";
@@ -86,9 +86,6 @@ export default {
             this.isFailed = true;
           }
         });
-    },
-    deleteOk() {
-      this.loadData();
     },
   },
 };

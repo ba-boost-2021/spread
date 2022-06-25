@@ -6,8 +6,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Status</th>
+              <th>Adı</th>
+              <th>Durumu</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
@@ -17,10 +17,10 @@
               </td>
               <td>
                 <span v-if="l.isActive" class="badge bg-label-success me-1"
-                  >Active</span
+                  >Aktif</span
                 >
                 <span v-if="!l.isActive" class="badge bg-label-danger me-1"
-                  >Passive</span
+                  >Pasif</span
                 >
               </td>
               <td>
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-  <DeleteConfirm ref="deleteModal" @yes="deleteOk" />
+  <DeleteConfirm ref="deleteModal" @on-confirm="loadData" />
 </template>
 <script>
 import DeleteConfirm from "../components/modals/LookupTypeDeleteConfirm.vue";
@@ -83,9 +83,6 @@ export default {
             this.isFailed = true;
           }
         });
-    },
-    deleteOk() {
-      this.loadData();
     },
   },
 };
