@@ -95,5 +95,17 @@ namespace Spread.IntegrationTests.TestFixtures
             var result2 = await Api.Get<LookUpDto>($"api/management/lookup/get/{id}");
             Assert.IsNull(result2);
         }
+        [Test]
+        public async Task ICan_Edit_Lookup()
+        {
+            var content = new EditLookupRequestDto
+            {
+                Id = ConstantIds.Lookup.AnkaraId,
+                Name = "Ankara",
+            };
+            
+            var result = await Api.Put<EditLookupRequestDto,bool>($"api/management/lookup/update",content);
+            Assert.That(result, Is.True);
+        }
     }
 }

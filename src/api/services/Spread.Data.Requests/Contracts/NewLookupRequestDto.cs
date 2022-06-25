@@ -6,3 +6,7 @@ public class NewLookupRequestDto
     public Guid TypeId { get; set; }
     public Guid? ParentId { get; set; }
 }
+
+
+
+

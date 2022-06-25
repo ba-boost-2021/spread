@@ -48,10 +48,10 @@
       </div>
     </div>
   </div>
-  <DeleteConfirm ref="deleteModal" @on-confirm="loadData" />
+  <DeleteModal ref="deleteModal" @on-confirm="loadData" />
 </template>
 <script>
-import DeleteConfirm from "../components/modals/LookupTypeDeleteConfirm.vue";
+import DeleteModal from "../components/modals/LookupTypeDeleteConfirm.vue";
 export default {
   name: "LookupTypePage",
   data() {
@@ -61,7 +61,7 @@ export default {
     };
   },
   components: {
-    DeleteConfirm,
+    DeleteModal,
   },
   mounted() {
     this.loadData();

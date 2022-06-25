@@ -42,7 +42,7 @@ import { bootstrap } from "../../helpers/root/bootstrap";
 
 export default {
   emits: ["onConfirm"],
-  name: "DeleteConfirm",
+  name: "DeleteLookup",
   data() {
     return {
       modal: null,
