@@ -6,12 +6,10 @@ namespace Spread.Data.Query.Requests;
 public class EditLookupRequest : IRequest<bool>
 {
    
-    public EditLookupRequest(Guid id,EditLookupRequestDto data)
+    public EditLookupRequest(EditLookupRequestDto data)
     {
-        Id = id;
         Data = data;
     }
 
-    public Guid Id { get; }
     public EditLookupRequestDto Data { get; }
 }

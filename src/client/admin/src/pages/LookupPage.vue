@@ -37,7 +37,7 @@
                   </button>
                   <div class="dropdown-menu" > 
                   
-                    <a class="dropdown-item" @click="getbyid(l.id)" 
+                    <a class="dropdown-item" @click="openUpdateModal(l.id)" 
                       ><i
                         class="bx bx-edit-alt me-1"
                         data-bs-toggle="modal"
@@ -57,12 +57,12 @@
       </div>
     </div>
   </div>
-  <DeleteConfirm ref="deleteModal" @on-confirm="loadData" />
-  <Update ref="editModal" @yes="editOk" />
+  <DeleteModal ref="deleteModal" @on-confirm="loadData" />
+  <UpdateModal ref="editModal" @on-update="loadData" />
 </template>
 <script>
-import DeleteConfirm from "../components/modals/LookupPageDeleteConfirm.vue";
-import Update from "../components/LookupEditModal.vue";
+import DeleteModal from "../components/modals/LookupDeleteConfirm.vue";
+import UpdateModal from "../components/modals/LookupUpdate.vue";
 export default {
   name: "LookupPage",
   data() {
@@ -72,8 +72,8 @@ export default {
     };
   },
   components: {
-    DeleteConfirm,
-    Update,
+    DeleteModal,
+    UpdateModal,
   },
   mounted() {
     this.loadData();
@@ -83,7 +83,7 @@ export default {
     remove(id) {
       this.$refs.deleteModal.open(id);
     },
-    getbyid(id) {
+    openUpdateModal(id) {
       this.$refs.editModal.open(id);
     },
     loadData() {
@@ -99,9 +99,6 @@ export default {
             this.isFailed = true;
           }
         });
-    },
-    editOk() {
-      this.loadData();
     },
   },
 };

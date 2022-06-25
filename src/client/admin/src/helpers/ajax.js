@@ -3,7 +3,7 @@ import store from "../store";
 export default {
   install: (app) => {
     const instance = axios.create({
-      baseURL: "http://localhost:15000",
+      baseURL: "https://localhost:15000",
     });
 
     const addHeader = () => {

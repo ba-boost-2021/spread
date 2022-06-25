@@ -2,11 +2,6 @@
 
 public class EditLookupRequestDto
 {
+    public Guid Id { get; set; }
     public string Name { get; set; }
-    public Guid TypeId { get; set; }
-    public Guid? ParentId { get; set; }
 }
-
-
-
-

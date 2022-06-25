@@ -98,13 +98,13 @@ namespace Spread.IntegrationTests.TestFixtures
         [Test]
         public async Task ICan_Edit_Lookup()
         {
-            var id = ConstantIds.Lookup.AnkaraId;
             var content = new EditLookupRequestDto
             {
+                Id = ConstantIds.Lookup.AnkaraId,
                 Name = "Ankara",
             };
             
-            var result = await Api.Put<EditLookupRequestDto,bool>($"api/management/lookup/edit/{id}",content);
+            var result = await Api.Put<EditLookupRequestDto,bool>($"api/management/lookup/update",content);
             Assert.That(result, Is.True);
         }
     }
