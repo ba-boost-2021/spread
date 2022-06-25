@@ -51,8 +51,10 @@
       </div>
     </div>
   </div>
+  <DeleteConfirm ref="deleteModal" @on-confirm="loadData" />
 </template>
 <script>
+import DeleteConfirm from "../components/modals/LookupPageDeleteConfirm.vue";
 export default {
   name: "LookupPage",
   data() {
@@ -61,19 +63,15 @@ export default {
       isFailed: false,
     };
   },
+  components: {
+    DeleteConfirm,
+  },
   mounted() {
     this.loadData();
   },
   methods: {
     remove(id) {
-      this.$ajax
-        .delete(`api/management/lookup/delete/${id}`)
-        .then((response) => {
-          if (response.data) {
-            //TODO: toast
-            this.loadData();
-          }
-        });
+      this.$refs.deleteModal.open(id);
     },
     loadData() {
       this.$ajax
