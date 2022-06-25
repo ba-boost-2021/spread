@@ -117,7 +117,6 @@ export default {
           m.isOpen = false;
         });
       }
-      const isCurrent = m.to && m.to === this.$route.path;
       return isCurrent;
     },
     isCurrentPathOnRootMenu(m) {
