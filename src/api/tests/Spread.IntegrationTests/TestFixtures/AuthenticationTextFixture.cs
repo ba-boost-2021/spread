@@ -39,6 +39,7 @@ namespace Spread.IntegrationTests.TestFixtures
         {
             var user = new RegisterUserRequestDto
             {
+                FullName = "New User",
                 EMail = "newuser@mail.com",
                 UserName = "newuser",
                 Password = "qwer"

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Spread.Data.Context;
 
@@ -11,9 +12,10 @@ using Spread.Data.Context;
 namespace Spread.Data.Migrations
 {
     [DbContext(typeof(SpreadDbContext))]
-    partial class SpreadDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220626073838_UserFullNameColumn")]
+    partial class UserFullNameColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -501,7 +503,6 @@ namespace Spread.Data.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
 

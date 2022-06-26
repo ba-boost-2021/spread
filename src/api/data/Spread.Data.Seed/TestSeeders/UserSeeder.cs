@@ -12,6 +12,7 @@ public class UserSeeder : ITestSeeder
             {
                 UserName = "test1",
                 EMail = "test1@spread.com",
+                FullName = "Test 1",
                 Password = "1234",
                 PasswordHash = "2",
                 CreatedAt = DateTime.Now,
@@ -22,6 +23,7 @@ public class UserSeeder : ITestSeeder
             {
                 UserName = "test2",
                 EMail = "test2@spread.com",
+                FullName = "Test 2",
                 Password = "1234",
                 PasswordHash = "2",
                 CreatedAt = DateTime.Now,
@@ -32,6 +34,7 @@ public class UserSeeder : ITestSeeder
             {
                 UserName = "canperk",
                 EMail = "canperk@spread.com",
+                FullName = "Can Perk",
                 Password = "1234",
                 PasswordHash = "2",
                 CreatedAt = DateTime.Now,
@@ -42,6 +45,7 @@ public class UserSeeder : ITestSeeder
             {
                 UserName = "esengul",
                 EMail = "esengul@spread.com",
+                FullName = "Esengül",
                 Password = "1234",
                 PasswordHash = "2",
                 CreatedAt = DateTime.Now,

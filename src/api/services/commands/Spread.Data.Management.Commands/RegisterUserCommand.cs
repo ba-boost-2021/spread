@@ -19,8 +19,7 @@ internal class RegisterUserCommand : IRequestHandler<RegisterUserRequest, bool>
     public async Task<bool> Handle(RegisterUserRequest request, CancellationToken cancellationToken)
     {
         var repository = unitOfWork.GetRepository<User>();
-        var existingUser = await repository.Get(f => f.EMail == request.Data.EMail || 
-                                                     f.UserName == request.Data.UserName, 
+        var existingUser = await repository.Get(f => f.EMail == request.Data.EMail || f.UserName == request.Data.UserName, 
                                                 cancellationToken);
         if (existingUser != null)
         {
@@ -29,6 +28,7 @@ internal class RegisterUserCommand : IRequestHandler<RegisterUserRequest, bool>
         var entity = mapper.Map<User>(request.Data);
         entity.PasswordHash = Guid.NewGuid().ToString();
         entity.Password = (request.Data.Password + entity.PasswordHash).CreateHash();
+        entity.VerificationId = Guid.NewGuid().ToString();
         repository.Insert(entity);
         var result = await unitOfWork.SaveChanges(cancellationToken);
         return result > 0;

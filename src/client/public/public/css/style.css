@@ -1340,7 +1340,7 @@ textarea {
     border-bottom: 0;
 }
 
-form button {
+form button, button {
     border: medium none;
     color: #fff;
     font-size: 13px;
@@ -3780,23 +3780,28 @@ a.add-butn.more-action {
 
 /*--- edit basic info page ---*/
 
-.editing-info > form {
+.editing-info {
     margin-top: 25px;
 }
 
-form .form-group.half {
+.editing-info .control-label {
+    text-align: left;
+    left: 0;
+}
+
+.form-group.half {
     float: left;
     margin-right: 20px;
     width: 46%;
 }
 
-form .form-group.half {
+.form-group.half {
     float: left;
     margin-right: 10px;
     width: 48.2%;
 }
 
-form .form-group.half:nth-child(2) {
+.form-group.half:nth-child(2) {
     margin-right: 0;
 }
 
@@ -9503,7 +9508,7 @@ button.submit-checkout {
 
 /*--- logout page ---*/
 
-.login-form form input {
+.login-form input {
     background: #f4f2f2 none repeat scroll 0 0;
     border: medium none;
     font-size: 13px;
@@ -9513,9 +9518,10 @@ button.submit-checkout {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px;
+    margin-right: 10px
 }
 
-.login-form > form {
+.login-form {
     display: inline-block;
     width: 100%;
     margin-top: 10px;
