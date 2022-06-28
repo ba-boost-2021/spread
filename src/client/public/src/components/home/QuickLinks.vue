@@ -14,7 +14,7 @@
       </li>
       <li>
         <i class="ti-power-off"></i>
-        <a href="landing.html" title="">Logout</a>
+        <a @click="logOut" title="">Çıkış Yap</a>
       </li>
     </ul>
   </div>
@@ -22,5 +22,11 @@
 <script>
 export default {
   name: "QuickLinks",
+  methods: {
+    logOut() {
+      this.$store.commit("session/logOut");
+      this.$router.push("/login");
+    }
+  }
 };
 </script>

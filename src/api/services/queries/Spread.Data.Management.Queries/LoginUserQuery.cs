@@ -57,7 +57,7 @@ internal class LoginUserQuery : IRequestHandler<LoginUserRequest, LoginResultDto
         return new LoginResultDto
         {
             Token = jwtToken,
-            DisplayName = $"{entity.UserName} ({entity.EMail})"
+            DisplayName = entity.FullName
         };
     }
 }

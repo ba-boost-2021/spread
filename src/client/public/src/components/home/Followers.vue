@@ -1,6 +1,6 @@
 <template>
   <div class="widget stick-widget">
-    <h4 class="widget-title">Who's follownig</h4>
+    <h4 class="widget-title">Takip İstekleri</h4>
     <ul class="followers">
       <li>
         <figure>

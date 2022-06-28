@@ -1,12 +1,11 @@
 <template>
   <div class="widget">
-    <h4 class="widget-title">Your page</h4>
     <div class="your-page">
       <figure>
         <a href="#" title=""><img src="images/user.png" alt="" /></a>
       </figure>
       <div class="page-meta">
-        <a href="#" title="" class="underline">My page</a>
+        <a href="#" title="" class="underline">{{$store.state.session.displayName}}</a>
         <span
           ><i class="ti-comment"></i
           ><a href="insight.html" title="">Messages <em>9</em></a></span
@@ -91,3 +90,8 @@ export default {
   name: "Profile",
 };
 </script>
+<style scoped>
+.widget{
+  padding-top: 10px;
+}
+</style>

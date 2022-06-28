@@ -52,6 +52,7 @@ export default {
   margin: 10px;
   font-size: 1.2em;
   background-color: v-bind(bgColor);
-  color: v-bind(color)
+  color: v-bind(color);
+  text-align: left;
 }
 </style>

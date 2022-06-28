@@ -1,6 +1,6 @@
 <template>
   <div class="widget friend-list stick-widget">
-    <h4 class="widget-title">Friends</h4>
+    <h4 class="widget-title">Arkadaşlar</h4>
     <div id="searchDir"></div>
     <ul id="people-list" class="friendz-list">
       <li>

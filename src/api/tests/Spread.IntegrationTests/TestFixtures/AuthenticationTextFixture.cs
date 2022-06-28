@@ -19,6 +19,7 @@ namespace Spread.IntegrationTests.TestFixtures
             var result = await Api.Post<LoginRequestDto, LoginResultDto>("api/authentication/login", request);
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Token, Is.Not.Null);
+            Assert.That(result.DisplayName, Is.EqualTo("System Account"));
         }
 
         [TestCase("admin", "wrongpassword")]

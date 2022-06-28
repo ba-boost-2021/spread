@@ -1175,7 +1175,6 @@ header.sticky {
     margin-bottom: 30px;
     padding: 20px 20px 10px;
     position: relative;
-    text-transform: uppercase;
     width: 100%;
 }
 
@@ -9530,7 +9529,6 @@ button.submit-checkout {
 .login-form {
     display: inline-block;
     vertical-align: middle;
-    width: 55%;
 }
 
 .login-form button {
@@ -10052,4 +10050,9 @@ aside.sidebar.full-style {
     text-transform: uppercase;
 }
 
+.center{
+  display: flex;
+  justify-content: center;
+}
 
+a{ cursor: pointer;}

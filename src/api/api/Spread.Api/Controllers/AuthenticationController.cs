@@ -21,6 +21,10 @@ namespace Spread.Api.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequestDto data, CancellationToken cancellationToken)
         {
             var result = await service.LoginUser(data, cancellationToken);
+            if (result == null)
+            {
+                return BadRequest();
+            }
             return Ok(result);
         }
 
