@@ -10,4 +10,5 @@ public class Follower : EntityBase
     public User User { get; set; }
     [ForeignKey(nameof(FollowingUserId))]
     public User FollowingUser { get; set; }
+    public bool IsApproved { get; set; }
 }
