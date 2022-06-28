@@ -15,18 +15,29 @@ namespace Spread.IntegrationTests.TestFixtures
             [SetUp]
             public Task Setup()
             {
-                return Login("admin");
+                return Login("test1");
             }
 
             [Test]
             [Order(1)]
             public async Task ICan_List_Followers()
             {
-                var result = await Api.Get<List<FollowerListDto>>("api/public/follower/list");
+                var result = await Api.Get<List<FollowerListDto>>("api/public/follower/followers");
                 Assert.That(result, Is.Not.Null);
-                Assert.That(result.Count, Is.EqualTo(5));
-                Assert.That(result.First().Name, Is.EqualTo(""));
-                Assert.That(result.Last().Name, Is.EqualTo(""));
+                Assert.That(result.Count, Is.EqualTo(3));
+                Assert.That(result.Any(x=> x.UserName == "test2"), Is.True);
+                Assert.That(result.Any(x => x.UserName == "esengul"), Is.True);
+                Assert.That(result.Any(x => x.UserName == "canperk"), Is.True);
+            }
+
+            [Test]
+            [Order(1)]
+            public async Task ICan_List_Follow_Request()
+            {
+                var result = await Api.Get<List<FollowerListDto>>("api/public/follower/requests");
+                Assert.That(result, Is.Not.Null);
+                Assert.That(result.Count, Is.EqualTo(1));
+                Assert.That(result.First().UserName, Is.EqualTo("mete"));
             }
         }
-}
+}   
