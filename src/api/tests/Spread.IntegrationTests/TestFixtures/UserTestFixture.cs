@@ -22,7 +22,7 @@ namespace Spread.IntegrationTests.TestFixtures
         {
             var result = await Api.Get<List<UserListDto>>("api/management/user/list");
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.Count, Is.EqualTo(5));
+            Assert.That(result.Count, Is.EqualTo(6));
             Assert.That(result.First().EMail, Is.EqualTo("admin@spread.com"));
             Assert.That(result.Last().EMail, Is.EqualTo("test2@spread.com"));
         }

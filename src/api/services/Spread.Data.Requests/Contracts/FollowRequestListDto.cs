@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spread.Data.Requests.Contracts
 {
-    public class FollowerListDto
+    public class FollowRequestListDto
     {
         public string UserName { get; set; }
         public string Name { get; set; }

@@ -10,6 +10,8 @@ namespace Spread.Mapper.Profiles
         {
             CreateMap<User, UserListDto>();
             CreateMap<RegisterUserRequestDto, User>();
+            CreateMap<User, FollowerListDto>();             //Burada da User yerine Follower kullanmak gerekmiyor muydu ?
+            CreateMap<User, FollowRequestListDto>();
         }
     }
 }
