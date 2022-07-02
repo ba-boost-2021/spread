@@ -10,6 +10,7 @@ public static class ServiceCollectionExtensions
         {
             config.AddProfile<ProfileProfile>();
             config.AddProfile<MainProfile>();
+            config.AddProfile<MadiaProfile>();
         });
         return services;
     }

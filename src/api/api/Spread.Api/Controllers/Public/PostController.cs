@@ -26,5 +26,11 @@ namespace Spread.Api.Controllers.Public
             }
             return BadRequest();
         }
+        [HttpGet("list")]
+        public async Task<IActionResult> ListPosts(CancellationToken cancellationToken)
+        {
+            var result = await service.GetAllPosts(cancellationToken);
+            return Ok(result);
+        }
     }
 }

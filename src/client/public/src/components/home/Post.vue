@@ -62,6 +62,7 @@
 <script>
 import Message from "../../components/Message.vue";
 export default {
+  emits:["post"],
   name: "Post",
   components: {
     Message,
@@ -89,13 +90,15 @@ export default {
       formData.append("Content", this.content);
       this.$ajax
         .post("api/public/post/post", formData, "multipart/form-data")
-        .then((response) => {
-          if (response.data) {
-            this.postSucceed = true;
-            setTimeout(() => {
-              this.postSucceed = false;
-            }, 5000);
-          }
+        .then(() => {
+          this.postSucceed = true;
+          this.content = null;
+          this.imageUrl = null;
+          this.file = null;
+          this.$emit("post");
+          setTimeout(() => {
+            this.postSucceed = false;
+          }, 5000);
         });
     },
   },

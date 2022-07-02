@@ -9,6 +9,11 @@ internal class PostService : IPostService
         this.mediator = mediator;
     }
 
+    public Task<List<PostListDto>> GetAllPosts(CancellationToken cancellationToken)
+    {
+        return mediator.Send(new ListPostsRequest(), cancellationToken);
+    }
+
     public Task<bool> Post(PostDto data, CancellationToken cancellationToken)
     {
         return mediator.Send(new NewPostRequest(data), cancellationToken);
