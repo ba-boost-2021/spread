@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\data\Spread.Data\Spread.Data.csproj" />
+    <ProjectReference Include="..\..\..\Spread.FileStorage\Spread.FileStorage.csproj" />
     <ProjectReference Include="..\..\Spread.Data.Requests\Spread.Data.Requests.csproj" />
   </ItemGroup>
 

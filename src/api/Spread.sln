@@ -52,6 +52,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data.Seed", "data\Sp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spread.Data.Management.Commands", "services\commands\Spread.Data.Management.Commands\Spread.Data.Management.Commands.csproj", "{8EE0DF77-068D-452E-A75D-6559194D9F76}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integrations", "integrations", "{7A7D29D8-91D1-46D1-B9C8-B5C5F70A8AF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spread.FileStorage", "Spread.FileStorage\Spread.FileStorage.csproj", "{FD6467FC-0080-41E0-9341-F578A22A6ACF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +118,10 @@ Global
 		{8EE0DF77-068D-452E-A75D-6559194D9F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EE0DF77-068D-452E-A75D-6559194D9F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EE0DF77-068D-452E-A75D-6559194D9F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6467FC-0080-41E0-9341-F578A22A6ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6467FC-0080-41E0-9341-F578A22A6ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6467FC-0080-41E0-9341-F578A22A6ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6467FC-0080-41E0-9341-F578A22A6ACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,6 +143,7 @@ Global
 		{DB092833-9379-4118-9690-02EC46BA04FC} = {778817BD-A0C8-4F5D-9A21-E43C351D1198}
 		{CC2FBFCD-3A20-4BB5-9199-67182797680F} = {C4AACA98-96C0-4347-AFBF-78ABCB741B77}
 		{8EE0DF77-068D-452E-A75D-6559194D9F76} = {127EBCF4-CEA2-48AB-8727-30A9E4B88D5C}
+		{FD6467FC-0080-41E0-9341-F578A22A6ACF} = {7A7D29D8-91D1-46D1-B9C8-B5C5F70A8AF6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80158213-D7C5-48EA-A81C-1159C2D6D3BE}

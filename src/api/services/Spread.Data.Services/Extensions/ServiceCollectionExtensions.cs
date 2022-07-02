@@ -13,6 +13,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISystemParameterService, SystemParameterService>();
         services.AddScoped<ILookupTypeService, LookupTypeService>();
         services.AddScoped<IFollowerService, FollowerService>();
+        services.AddScoped<IPostService, PostService>();
 
         var queriesAssembly = AppDomain.CurrentDomain.Load("Spread.Data.Management.Queries");
         var commandsAssembly = AppDomain.CurrentDomain.Load("Spread.Data.Management.Commands");

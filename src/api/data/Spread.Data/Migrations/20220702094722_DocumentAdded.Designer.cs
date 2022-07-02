@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Spread.Data.Context;
 
@@ -11,9 +12,10 @@ using Spread.Data.Context;
 namespace Spread.Data.Migrations
 {
     [DbContext(typeof(SpreadDbContext))]
-    partial class SpreadDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220702094722_DocumentAdded")]
+    partial class DocumentAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

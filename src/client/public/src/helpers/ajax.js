@@ -5,11 +5,11 @@ export default {
     const instance = axios.create({
       baseURL: "https://localhost:15000",
     });
-
-    const addHeader = () => {
-      let config = {
-        headers: {},
-      };
+    var config = { headers: {} };
+    const addHeader = (contentType) => {
+      if (contentType) {
+        config.headers["Content-Type"] = contentType;
+      }
       const token = store.state.session.token;
       if (token) {
         config.headers["Authorization"] = "Bearer " + token;
@@ -21,8 +21,8 @@ export default {
       get: function (url) {
         return instance.get(url, addHeader());
       },
-      post: function (url, data) {
-        return instance.post(url, data, addHeader());
+      post: function (url, data, contentType) {
+        return instance.post(url, data, addHeader(contentType));
       },
       delete: function (url) {
         return instance.delete(url, addHeader());
