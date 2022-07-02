@@ -39,6 +39,6 @@ internal class ListPostsQuery : IRequestHandler<ListPostsRequest, List<PostListD
             post.FileUrl = fileStorageService.GetFileUrl($"{post.OwnerId}/{UserFolder.Posts.ToString().ToLower()}/{post.FileName}", StorageType.Images);
         });
         return result.OrderByDescending(f=>f.PublishDate).ToList();
-        //TODO: Order DESC Repository'e eklenmeli
+        //TODO: Order DESC için OrderDirection eklenip Repository ona göre düzenlenmeli eklenmeli
     }
 }

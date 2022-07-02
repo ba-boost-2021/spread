@@ -189,3 +189,4 @@ export default {
   },
 };
 </script>
+//TODO: Düzenlemeler yapılmadı...
