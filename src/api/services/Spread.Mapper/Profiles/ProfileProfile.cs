@@ -9,6 +9,7 @@ namespace Spread.Mapper.Profiles
         public ProfileProfile()
         {
             CreateMap<User, UserListDto>();
+                //.ForMember(m => m.UserName, f => f.MapFrom(s => s.UserName)); --> aslında olan ama default olarak yapılan
             CreateMap<RegisterUserRequestDto, User>();
             CreateMap<Follower, FollowerInfoDto>()
                 .ForMember(m => m.UserName, f => f.MapFrom(s => s.FollowingUser.UserName))

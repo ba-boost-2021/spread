@@ -15,8 +15,8 @@
                 </div>
 
                 <div class="col-lg-6">
-                  <Post />
-                  <Feed />
+                  <Post @post="refresh"/>
+                  <Feed ref="feed" />
                 </div>
                 <div class="col-lg-3">
                   <aside class="sidebar static">
@@ -53,6 +53,11 @@ export default {
     RecentActivities,
     QuickLinks,
     Footer,
+  },
+  methods: {
+    refresh(){
+      this.$refs.feed.load();
+    }
   },
 };
 </script>

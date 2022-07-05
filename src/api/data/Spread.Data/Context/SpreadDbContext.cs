@@ -34,4 +34,5 @@ public class SpreadDbContext : DbContext
     public DbSet<Post> Posts { get; set; }
     public DbSet<SystemParameter> SystemParameters { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Document> Documents { get; set; }
 }

@@ -5,8 +5,23 @@
         <img src="images/user.png" alt="" />
       </figure>
       <div class="newpst-input">
-        <form method="post">
-          <textarea rows="2" placeholder="write something"></textarea>
+        <Message
+          title="Gönderi paylaşıldı."
+          severity="success"
+          v-if="postSucceed"
+        />
+        <div>
+          <div style="display: flex; justify-content: center">
+            <img
+              :src="imageUrl"
+              style="border-radius: 2px; padding-bottom: 5px"
+            />
+          </div>
+          <textarea
+            rows="2"
+            placeholder="write something"
+            v-model="content"
+          ></textarea>
           <div class="attachments">
             <ul>
               <li>
@@ -18,7 +33,7 @@
               <li>
                 <i class="fa fa-image"></i>
                 <label class="fileContainer">
-                  <input type="file" />
+                  <input type="file" @change="imageSelected" />
                 </label>
               </li>
               <li>
@@ -34,18 +49,58 @@
                 </label>
               </li>
               <li>
-                <button type="submit">Post</button>
+                <button @click="post">Post</button>
               </li>
             </ul>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Message from "../../components/Message.vue";
 export default {
+  emits:["post"],
   name: "Post",
+  components: {
+    Message,
+  },
+  data() {
+    return {
+      imageUrl: null,
+      file: null,
+      content: null,
+      postSucceed: false,
+    };
+  },
+  methods: {
+    imageSelected(event) {
+      const [file] = event.target.files;
+      this.file = file;
+      // const file = event.target.files[0];
+      if (file) {
+        this.imageUrl = URL.createObjectURL(file);
+      }
+    },
+    post() {
+      let formData = new FormData();
+      formData.append("File", this.file);
+      formData.append("Content", this.content);
+      this.$ajax
+        .post("api/public/post/post", formData, "multipart/form-data")
+        .then(() => {
+          this.postSucceed = true;
+          this.content = null;
+          this.imageUrl = null;
+          this.file = null;
+          this.$emit("post");
+          setTimeout(() => {
+            this.postSucceed = false;
+          }, 5000);
+        });
+    },
+  },
 };
 </script>

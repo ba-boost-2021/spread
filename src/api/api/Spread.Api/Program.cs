@@ -19,6 +19,7 @@ builder.Services.AddJwt(settings)
                 .AddData(builder.Configuration)
                 .AddDataServices()
                 .AddAutoMapper();
+builder.Services.AddFileStorage();
 
 if (builder.Environment.IsDevelopment())
 {
