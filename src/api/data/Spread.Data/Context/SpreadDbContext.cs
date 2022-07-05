@@ -9,6 +9,18 @@ public class SpreadDbContext : DbContext
         this.ChangeTracker.LazyLoadingEnabled = false;
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Follower>().HasQueryFilter(f => !f.IsDeleted);
+        modelBuilder.Entity<User>().HasQueryFilter(f => !f.IsDeleted);
+        modelBuilder.Entity<LookUp>().HasQueryFilter(f => !f.IsDeleted);
+        modelBuilder.Entity<LookupType>().HasQueryFilter(f => !f.IsDeleted);
+        modelBuilder.Entity<Notification>().HasQueryFilter(f => !f.IsDeleted);
+        modelBuilder.Entity<Comment>().HasQueryFilter(f => !f.IsDeleted);
+
+        //BKZ: .IgnoreQueryFilters()
+    }
+
     public DbSet<Block> Blocks { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Follower> Followers { get; set; }

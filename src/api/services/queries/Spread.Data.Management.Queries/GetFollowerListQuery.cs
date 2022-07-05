@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Spread.Common;
 using Spread.Data.Abstractions;
 using Spread.Data.Requests.Contracts;
 using Spread.Data.Requests.Queries;
@@ -6,19 +7,24 @@ using Spread.Entities.Profile;
 
 namespace Spread.Data.Management.Queries
 {
-    internal class GetFollowerListQuery : IRequestHandler<GetFollowersRequest, List<FollowerListDto>>
+    internal class GetFollowerListQuery : IRequestHandler<GetFollowersRequest, List<FollowerInfoDto>>
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly IClaims claims;
 
-        public GetFollowerListQuery(IUnitOfWork unitOfWork)
+        public GetFollowerListQuery(IUnitOfWork unitOfWork, IClaims claims)
         {
             this.unitOfWork = unitOfWork;
+            this.claims = claims;
         }
 
-        public Task<List<FollowerListDto>> Handle(GetFollowersRequest request, CancellationToken cancellationToken)
+        public Task<List<FollowerInfoDto>> Handle(GetFollowersRequest request, CancellationToken cancellationToken)
         {
-            var repository = unitOfWork.GetRepository<User>();           //Burada Follower'a maplememiz gerekmez miydi ?
-            return repository.GetAll<FollowerListDto>(l => !l.IsDeleted, cancellationToken);
+            var repository = unitOfWork.GetRepository<Follower>();
+            return repository.GetAll<FollowerInfoDto>(f => f.IsActive && 
+                                                           f.IsApproved &&
+                                                           f.UserId == claims.CurrentUser.Id,
+                                                      cancellationToken);
         }
     }
 }

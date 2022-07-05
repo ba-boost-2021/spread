@@ -11,14 +11,14 @@ namespace Spread.Data.Services.Concretes
             this.mediator = mediator;
         }
 
-        public Task<List<FollowerListDto>> GetFollowers(CancellationToken cancellationToken)
+        public Task<List<FollowerInfoDto>> GetFollowers(CancellationToken cancellationToken)
         {
             return mediator.Send(new GetFollowersRequest(), cancellationToken);
         }
 
-        Task<List<FollowRequestListDto>> IFollowerService.GetFollowRequests(CancellationToken cancellationToken)
+        public Task<List<FollowerInfoDto>> GetFollowRequests(CancellationToken cancellationToken)
         {
-            return mediator.Send(new GetFollowRequestList(), cancellationToken);
+            return mediator.Send(new GetFollowRequestRequest(), cancellationToken);
         }
     }
 }
