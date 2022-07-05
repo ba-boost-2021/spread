@@ -9,77 +9,68 @@ public class WebApiWrapper
 {
     private readonly HttpClient client;
     private readonly SpreadApplicationFactory factory;
-    private readonly JsonSerializerOptions serializerOptions;
 
     public WebApiWrapper(SpreadApplicationFactory factory)
     {
         this.factory = factory;
         this.client = factory.Client;
-        this.serializerOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
     public string AccessToken { get; set; }
 
-    public async Task<T> Get<T>(string url)
-    {
-        SetupHeader();
-        var response = await client.GetAsync(url);
-        if (!response.IsSuccessStatusCode)
-        {
-            Assert.Fail($"{url}\n{response.StatusCode}");
-            return default(T);
-        }
-        var json = await response.Content.ReadAsStringAsync();
-        return string.IsNullOrEmpty(json) ? default(T) : JsonSerializer.Deserialize<T>(json, serializerOptions);
-    }
     public async Task<TResult> Delete<TResult>(string url)
     {
         SetupHeader();
         var response = await client.DeleteAsync(url);
-        if (!response.IsSuccessStatusCode)
-        {
-            Assert.Fail($"{url}\n{response.StatusCode}");
-            return default(TResult);
-        }
-        var json = await response.Content.ReadAsStringAsync();
-        return string.IsNullOrEmpty(json) ? default(TResult) : JsonSerializer.Deserialize<TResult>(json, serializerOptions);
+        return await HandleResponse<TResult>(response);
     }
 
-    public async Task<TResult> Post<TDto, TResult>(string url, TDto user)
+    public async Task<TResult> Get<TResult>(string url)
     {
-        var content = new StringContent(JsonSerializer.Serialize(user, serializerOptions), Encoding.UTF8, "application/json");
         SetupHeader();
+        var response = await client.GetAsync(url);
+        return await HandleResponse<TResult>(response);
+    }
+    public async Task<TResult> Post<TDto, TResult>(string url, TDto data)
+    {
+        var content = SetupHeaderAndCreateContent(data);
         var response = await client.PostAsync(url, content);
-        if (!response.IsSuccessStatusCode)
-        {
-            Assert.Fail($"{url}\n{response.StatusCode}");
-            return default(TResult);
-        }
-        var json = await response.Content.ReadAsStringAsync();
-        if (string.IsNullOrEmpty(json))
-        {
-            return default(TResult);
-        }
-        return JsonSerializer.Deserialize<TResult>(json, serializerOptions);
-    }
-    public async Task<TResult> Put<TDto, TResult>(string url, TDto user)
-    {
-        var content = new StringContent(JsonSerializer.Serialize(user, serializerOptions), Encoding.UTF8, "application/json");
-        SetupHeader();
-        var response = await client.PutAsync(url, content);
-        if (!response.IsSuccessStatusCode)
-        {
-            Assert.Fail($"{url}\n{response.StatusCode}");
-            return default(TResult);
-        }
-        var json = await response.Content.ReadAsStringAsync();
-        if (string.IsNullOrEmpty(json))
-        {
-            return default(TResult);
-        }
-        return JsonSerializer.Deserialize<TResult>(json, serializerOptions);
+        return await HandleResponse<TResult>(response);
     }
 
+    public async Task<TResult> Put<TDto, TResult>(string url, TDto data)
+    {
+        var content = SetupHeaderAndCreateContent(data);
+        var response = await client.PutAsync(url, content);
+        return await HandleResponse<TResult>(response);
+    }
+
+    internal void DropDatabase()
+    {
+        factory.Clean();
+    }
+
+    private StringContent SetupHeaderAndCreateContent<TDto>(TDto data)
+    {
+        SetupHeader();
+        var serializerOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        return new StringContent(JsonSerializer.Serialize(data, serializerOptions), Encoding.UTF8, "application/json");
+    }
+
+    private async Task<TResult> HandleResponse<TResult>(HttpResponseMessage response)
+    {
+        if (!response.IsSuccessStatusCode)
+        {
+            return default(TResult);
+        }
+        var json = await response.Content.ReadAsStringAsync();
+        if (string.IsNullOrEmpty(json))
+        {
+            return default(TResult);
+        }
+        var serializerOptions = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        return JsonSerializer.Deserialize<TResult>(json, serializerOptions);
+    }
 
     private void SetupHeader()
     {
@@ -90,11 +81,4 @@ public class WebApiWrapper
 
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken);
     }
-
-    internal void DropDatabase()
-    {
-        factory.Clean();
-    }
-
-
 }

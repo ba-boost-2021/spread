@@ -7,17 +7,25 @@ namespace Spread.Api.Controllers.Public
     [Authorize]
     public class FollowerController : ControllerBase
     {
+        private readonly IFollowerService service;
+
+        public FollowerController(IFollowerService service)
+        {
+            this.service = service;
+        }
+
         [HttpGet("requests")]
         public async Task<IActionResult> GetFollowRequests(CancellationToken cancellationToken)
         {
-            
-            return Ok(true);
+            var result = await service.GetFollowRequests(cancellationToken);
+            return Ok(result);
         }
 
         [HttpGet("followers")]
         public async Task<IActionResult> GetFollowers(CancellationToken cancellationToken)
         {
-            return Ok(true);
+            var result = await service.GetFollowers(cancellationToken);
+            return Ok(result);
         }
     }
 }
